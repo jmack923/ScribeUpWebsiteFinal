@@ -1,0 +1,19 @@
+GLOBAL DEVELOPMENT PROTOCOL: Simultaneous Responsive Sync
+
+- Never Break Mobile: Whenever you design, update, or tweak a layout for desktop/web, you MUST simultaneously write, update, and verify the corresponding responsive behavior for:
+  - @media (max-width: 768px)
+  - @media (max-width: 1024px)
+
+- Mobile Best Practices:
+  - If you add a new horizontal row on desktop, ensure it stacks cleanly on mobile.
+  - If you add or change text, ensure it wraps cleanly (prefer `text-wrap: balance`) and scales down appropriately on mobile.
+  - If you add or change a button, ensure it becomes a full-width touch target on mobile:
+    - width: 100%
+    - height: 52px
+    - border-radius: 12px
+    - stacked vertically with a 12px gap when there are multiple CTAs.
+
+- Workflow Requirement:
+  - For every change you propose, explicitly state:
+    - “Here is the desktop update, AND here is how I secured the mobile/tablet views to match.”
+

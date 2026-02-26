@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AT&T"><defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#1ea2ff"/></linearGradient></defs><circle cx="32" cy="32" r="30" fill="url(#b)"/>
+<g fill="none" stroke="rgba(255,255,255,0.92)" stroke-linecap="round">
+  <path d="M12 26c6-4 14-6 20-6s14 2 20 6" stroke-width="3.8" opacity="0.95"/>
+  <path d="M10 32c7-3 15-4 22-4s15 1 22 4" stroke-width="3.6" opacity="0.9"/>
+  <path d="M12 38c6 3 14 5 20 5s14-2 20-5" stroke-width="3.4" opacity="0.86"/>
+</g></svg>

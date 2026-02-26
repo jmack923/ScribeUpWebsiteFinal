@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 40" fill="none">
+  <!-- Chartway 2022: brilliant C (arc) -->
+  <path fill="#E31837" d="M26 20c0-6.6-5.4-12-12-12-2.1 0-4.1.6-5.8 1.5l1.5 2.6c1.2-.7 2.6-1.1 4.3-1.1 4.4 0 8 3.6 8 8s-3.6 8-8 8c-1.7 0-3.1-.4-4.3-1.1l-1.5 2.6c1.7.9 3.7 1.5 5.8 1.5 6.6 0 12-5.4 12-12z"/>
+  <text x="48" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#1a1a1a" letter-spacing="-0.01em">Chartway Credit Union</text>
+</svg>

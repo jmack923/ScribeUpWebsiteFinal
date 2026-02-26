@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Prevent initial paint at a restored scroll position (fixes “footer flash then jump to top”).
+      // Must run before React mounts.
+      (function () {
+        try {
+          if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+          window.scrollTo(0, 0);
+        } catch (_) {}
+      })();
+    </script>
+    <!-- Favicon / app identity -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#5464ff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ScribeUp 2026 — embedded recurring bill management infrastructure for modern financial institutions."
+    />
+
+    <!-- Open Graph / Twitter (link previews) -->
+    <meta property="og:site_name" content="ScribeUp 2026" />
+    <meta property="og:title" content="ScribeUp 2026" />
+    <meta
+      property="og:description"
+      content="Embedded recurring bill management infrastructure for modern financial institutions."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ScribeUp 2026" />
+    <meta
+      name="twitter:description"
+      content="Embedded recurring bill management infrastructure for modern financial institutions."
+    />
+    <meta name="twitter:image" content="/og.svg" />
+    <!-- Fonts (avoid FOUT/layout shift) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+    />
+    <title>ScribeUp</title>
+  </head>
+  <body class="h-full min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script src="https://cdn.jsdelivr.net/npm/heroui-chat-script@0/dist/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/heroui-chat-script@beta/dist/select-and-edit-utils.global.js"></script>
+
+    <!-- GSAP Core -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+
+    <script>
+      // ELITE GSAP UTILITIES (React-safe init + reduced-motion + refresh)
+      (function () {
+        if (!window.gsap || !window.ScrollTrigger) return;
+        const gsap = window.gsap;
+        const ScrollTrigger = window.ScrollTrigger;
+        gsap.registerPlugin(ScrollTrigger);
+
+        const prefersReducedMotion = () =>
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const onReady = (fn) => {
+          if (document.readyState === "complete") fn();
+          else window.addEventListener("load", fn, { once: true });
+        };
+
+        const refreshSoon = () => {
+          requestAnimationFrame(() => ScrollTrigger.refresh());
+        };
+
+        const safeParseNum = (v, fallback = 0) => {
+          const n = parseFloat(v);
+          return Number.isFinite(n) ? n : fallback;
+        };
+
+        const easeMap = (ease) => {
+          const e = (ease || "").trim();
+          if (!e) return "power3.out";
+          if (e === "soft") return "power2.out";
+          if (e === "snappy") return "power4.out";
+          if (e === "expo") return "expo.out";
+          if (e === "smooth") return "power3.inOut";
+          return e;
+        };
+
+        // Auto refresh on resize/font/image shifts
+        window.addEventListener("resize", refreshSoon, { passive: true });
+        window.addEventListener("orientationchange", refreshSoon, { passive: true });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(refreshSoon).catch(() => {});
+        window.addEventListener("load", () => setTimeout(refreshSoon, 100), { once: true });
+
+        // ---- Text reveal (SplitType) ----
+        function initTextReveal() {
+          if (prefersReducedMotion()) return;
+          if (typeof window.SplitType !== "function") return;
+          const sections = document.querySelectorAll('[anm-scroll-text="section"]');
+          sections.forEach((section) => {
+            const headlines = section.querySelectorAll('[anm-scroll-text="headline"]');
+            const texts = section.querySelectorAll('[anm-scroll-text="text"]');
+            if (!headlines.length && !texts.length) return;
+
+            const start = section.getAttribute("anm-start") || "top 80%";
+            const once = (section.getAttribute("anm-once") || "true") !== "false";
+
+            const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+            const st = ScrollTrigger.create({
+              trigger: section,
+              start,
+              animation: tl,
+              toggleActions: "play none none none",
+              once,
+              invalidateOnRefresh: true,
+            });
+            window.__anmST = window.__anmST || [];
+            window.__anmST.push(st);
+
+            const animateEl = (el, kind) => {
+              try {
+              const split = el.getAttribute("anm-split") || (kind === "headline" ? "lines" : "lines,words");
+              const dist = el.getAttribute("anm-distance") || (kind === "headline" ? "120%" : "60%");
+              const dur = safeParseNum(el.getAttribute("anm-duration"), kind === "headline" ? 1.05 : 0.9);
+              const ease = easeMap(el.getAttribute("anm-ease") || (kind === "headline" ? "expo" : "soft"));
+              const splitObj = new window.SplitType(el, { types: split });
+              const targets = split.includes("chars")
+                ? splitObj.chars
+                : split.includes("words")
+                  ? splitObj.words
+                  : splitObj.lines;
+
+              tl.fromTo(
+                targets,
+                { opacity: 0, y: dist, filter: "blur(8px)", willChange: "transform, opacity, filter" },
+                { opacity: 1, y: 0, filter: "blur(0px)", duration: dur, stagger: 0.06, ease, clearProps: "willChange" },
+                0
+              );
+              } catch (e) { /* SplitType or GSAP may fail on some elements */ }
+            };
+
+            headlines.forEach((h) => animateEl(h, "headline"));
+            texts.forEach((t) => animateEl(t, "text"));
+          });
+        }
+
+        // ---- Curve divider reveal ----
+        function initCurveReveal() {
+          if (prefersReducedMotion()) return;
+          const curves = document.querySelectorAll('[anm-curve="el"]');
+          curves.forEach((el) => {
+            const section = el.closest("section") || el.parentElement;
+            if (!section) return;
+            const tween = gsap.fromTo(
+              el,
+              { y: 20, opacity: 0, filter: "blur(10px)" },
+              {
+                y: 0,
+                opacity: 1,
+                filter: "blur(0px)",
+                duration: 0.9,
+                ease: "power3.out",
+                scrollTrigger: { trigger: section, start: "top 85%", once: true, invalidateOnRefresh: true },
+              }
+            );
+            window.__anmTweens = window.__anmTweens || [];
+            window.__anmTweens.push(tween);
+            if (tween && tween.scrollTrigger) {
+              window.__anmST = window.__anmST || [];
+              window.__anmST.push(tween.scrollTrigger);
+            }
+          });
+        }
+
+        // ---- Image / module reveal (clipPath + opacity) ----
+        // Use sparingly for “hero modules” so the site doesn’t feel flat.
+        function initImageReveal() {
+          if (prefersReducedMotion()) return;
+
+          const full = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+          const clipTop = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
+          const clipBottom = "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)";
+          const clipLeft = "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)";
+          const clipRight = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
+          const clipCenter = "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)";
+
+          const sections = document.querySelectorAll('[anm-scroll-img="section"]');
+          sections.forEach((section) => {
+            const imgs = section.querySelectorAll('[anm-scroll-img="img"]');
+            if (!imgs.length) return;
+
+            const start = section.getAttribute("anm-start") || "top 78%";
+            const once = (section.getAttribute("anm-once") || "true") !== "false";
+
+            imgs.forEach((el) => {
+              const type = (el.getAttribute("anm-type") || "clip").trim();
+              const dir = (el.getAttribute("anm-direction") || "bottom").trim();
+              const dur = safeParseNum(el.getAttribute("anm-duration"), 0.95);
+              const delay = safeParseNum(el.getAttribute("anm-delay"), 0);
+              const ease = easeMap(el.getAttribute("anm-ease") || "soft");
+
+              let fromClip = clipBottom;
+              if (dir === "top") fromClip = clipTop;
+              if (dir === "left") fromClip = clipLeft;
+              if (dir === "right") fromClip = clipRight;
+              if (dir === "center") fromClip = clipCenter;
+
+              const fromVars =
+                type === "opacity"
+                  ? { opacity: 0, y: 12, filter: "blur(8px)" }
+                  : { clipPath: fromClip, opacity: 0.01, y: 10, filter: "blur(10px)" };
+
+              const toVars =
+                type === "opacity"
+                  ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                  : { clipPath: full, opacity: 1, y: 0, filter: "blur(0px)" };
+
+              const tween = gsap.fromTo(
+                el,
+                { ...fromVars, willChange: "clip-path, transform, opacity, filter" },
+                {
+                  ...toVars,
+                  duration: dur,
+                  delay,
+                  ease,
+                  clearProps: "willChange",
+                  scrollTrigger: {
+                    trigger: section,
+                    start,
+                    toggleActions: "play none none none",
+                    once,
+                    invalidateOnRefresh: true,
+                  },
+                }
+              );
+
+              window.__anmTweens = window.__anmTweens || [];
+              window.__anmTweens.push(tween);
+              if (tween && tween.scrollTrigger) {
+                window.__anmST = window.__anmST || [];
+                window.__anmST.push(tween.scrollTrigger);
+              }
+            });
+          });
+        }
+
+        // ---- Push button (wrap + text) ----
+        function initPushButtons() {
+          if (prefersReducedMotion()) return;
+          const wraps = document.querySelectorAll('[anm-push-btn="wrap"]');
+          wraps.forEach((btn) => {
+            if (btn.__anmPushInit) return;
+            btn.__anmPushInit = true;
+
+            const text = btn.querySelector('[anm-push-btn="text"]');
+            if (!text) return;
+
+            const cs = window.getComputedStyle(btn);
+            if (cs.position === "static") btn.style.position = "relative";
+            btn.style.overflow = "hidden";
+
+            const clone = text.cloneNode(true);
+            clone.style.position = "absolute";
+            clone.style.inset = "0";
+            clone.style.display = "inline-flex";
+            clone.style.alignItems = "center";
+            clone.style.justifyContent = "center";
+            clone.style.pointerEvents = "none";
+            clone.style.willChange = "transform";
+            clone.setAttribute("aria-hidden", "true");
+            clone.style.transform = "translate3d(0,105%,0)";
+            text.after(clone);
+
+            const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.inOut", duration: 0.42 } });
+            tl.to(text, { yPercent: -105 }, 0).to(clone, { yPercent: -105 }, 0);
+            tl.to(btn, { scale: 0.985, duration: 0.16, ease: "power2.out" }, 0)
+              .to(btn, { scale: 1, duration: 0.26, ease: "power2.out" }, 0.16);
+
+            btn.addEventListener("mouseenter", () => tl.play());
+            btn.addEventListener("mouseleave", () => tl.reverse());
+          });
+        }
+
+        // ---- Section reveal (IntersectionObserver + stagger) ----
+        function initSectionReveal() {
+          const sections = document.querySelectorAll('[data-reveal="section"]');
+          if (!sections.length) return;
+
+          if (prefersReducedMotion()) {
+            document.documentElement.classList.add("reveal-ready");
+            sections.forEach((section) => {
+              const items = section.querySelectorAll("[data-reveal-item]");
+              items.forEach((item) => item.classList.add("is-visible"));
+            });
+            return;
+          }
+
+          const observers = [];
+
+          sections.forEach((section) => {
+            const replay = section.getAttribute("data-reveal-replay") === "true";
+            const explicit = Array.from(section.querySelectorAll("[data-reveal-item]"));
+            const items = explicit.length
+              ? explicit
+              : Array.from(section.children).filter((el) => !el.hasAttribute("aria-hidden"));
+            if (!items.length) return;
+
+            items.forEach((item, idx) => {
+              item.style.transitionDelay = `${Math.min(idx * 80, 420)}ms`;
+            });
+
+            // Prevent “blank/flicker” on SPA transitions:
+            // mark in-viewport sections as visible BEFORE enabling `.reveal-ready` (which applies hidden styles).
+            try {
+              const r = section.getBoundingClientRect();
+              const vh = window.innerHeight || 0;
+              const inViewNow = r.top < vh * 0.92 && r.bottom > vh * 0.15;
+              if (inViewNow) items.forEach((item) => item.classList.add("is-visible"));
+              else if (replay) items.forEach((item) => item.classList.remove("is-visible"));
+            } catch (_) {}
+
+            const obs = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    items.forEach((item) => item.classList.add("is-visible"));
+                    if (!replay) obs.unobserve(section);
+                  } else if (replay) {
+                    items.forEach((item) => item.classList.remove("is-visible"));
+                  }
+                });
+              },
+              {
+                root: null,
+                threshold: 0.12,
+                rootMargin: "0px 0px -10% 0px",
+              }
+            );
+
+            obs.observe(section);
+            observers.push(obs);
+          });
+
+          // Enable hidden/reveal styles AFTER we’ve pre-marked visible sections.
+          document.documentElement.classList.add("reveal-ready");
+
+          // store so we can disconnect on SPA re-init
+          window.__anmObservers = observers;
+        }
+
+        function resetAnmOnly() {
+          // Kill ONLY our own triggers/tweens/observers (do not nuke component ScrollTriggers)
+          try {
+            (window.__anmST || []).forEach((t) => t && t.kill && t.kill());
+          } catch (_) {}
+          window.__anmST = [];
+
+          try {
+            (window.__anmTweens || []).forEach((tw) => tw && tw.kill && tw.kill());
+          } catch (_) {}
+          window.__anmTweens = [];
+
+          try {
+            (window.__anmObservers || []).forEach((o) => o && o.disconnect && o.disconnect());
+          } catch (_) {}
+          window.__anmObservers = [];
+        }
+
+        function initAll() {
+          // SPA safe: clear ONLY our ANM triggers/tweens (avoid breaking component-driven pin/ScrollTriggers)
+          resetAnmOnly();
+          initTextReveal();
+          initCurveReveal();
+          initImageReveal();
+          initPushButtons();
+          initSectionReveal();
+          refreshSoon();
+        }
+
+        // Initial + SPA re-init
+        onReady(initAll);
+        window.addEventListener("anm:refresh", initAll);
+      })();
+    </script>
+  </body>
+</html>

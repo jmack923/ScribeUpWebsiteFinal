@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f7ff" />
+      <stop offset="55%" stop-color="#eef4ff" />
+      <stop offset="100%" stop-color="#f7fbff" />
+    </linearGradient>
+    <radialGradient id="glow1" cx="18%" cy="18%" r="60%">
+      <stop offset="0%" stop-color="rgba(84,100,255,0.20)" />
+      <stop offset="100%" stop-color="rgba(84,100,255,0)" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="82%" cy="22%" r="62%">
+      <stop offset="0%" stop-color="rgba(30,162,255,0.14)" />
+      <stop offset="100%" stop-color="rgba(30,162,255,0)" />
+    </radialGradient>
+    <linearGradient id="mark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8FA3FF" />
+      <stop offset="100%" stop-color="#A3FFCD" />
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b4cff" />
+      <stop offset="100%" stop-color="#1ea2ff" />
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="rgba(84,100,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow1)" />
+  <rect width="1200" height="630" fill="url(#glow2)" />
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.7" />
+
+  <!-- Mark -->
+  <g transform="translate(92 120)">
+    <rect x="0" y="0" width="72" height="72" rx="18" fill="rgba(255,255,255,0.78)" stroke="rgba(120,140,180,0.22)" />
+    <path
+      transform="translate(11 11) scale(1.0)"
+      fill="url(#mark)"
+      d="M34.926 0c.337 0 .635.167.816.423.268-.052.555.01.783.187l.092.081 4.513 4.513v2.534l2.533-.001 4.44 4.44c.231.231.322.55.273.85.296.172.495.494.495.862v21.128c0 .357-.187.67-.469.847.04.29-.053.595-.276.818l-4.449 4.448H41.13v2.548l-4.49 4.49c-.224.224-.53.316-.821.277-.18.256-.479.423-.816.423H13.855c-.336 0-.633-.166-.814-.42-.266.047-.548-.016-.772-.19l-.092-.081L7.74 43.74V41.13h-2.61L.69 36.69c-.233-.233-.324-.555-.272-.858-.254-.18-.419-.477-.419-.813V13.888c0-.33.16-.621.405-.804-.07-.313.018-.654.263-.898L5.11 7.74l1.127-.001v-.002h1.503V5.111L12.153.7c.221-.22.521-.314.809-.28.18-.253.478-.42.814-.42h21.15zm-.963 4.734H14.815l-3.004 3.004h21.991v4.735H7.076l-2.342 2.342v19.222l3.007 3.007V15.219h4.736l-.001 12.006h18.132v4.736l-18.132-.001v9.777h-.042l2.395 2.395h19.15l3.003-3.003h-22.1v-4.734l26.835-.001 2.419-2.419V14.907L41.129 11.9v22.09h-4.734l-.001-12.007h-18.13V17.25l18.13-.001V7.165l-2.431-2.431z"
+    />
+  </g>
+
+  <!-- Text -->
+  <text x="180" y="168" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial" font-size="44" font-weight="700" fill="#0B1020">
+    ScribeUp
+  </text>
+  <text x="180" y="214" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial" font-size="18" font-weight="600" fill="rgba(11,16,32,0.62)" letter-spacing="0.02em">
+    ScribeUp 2026
+  </text>
+
+  <text x="92" y="310" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial" font-size="56" font-weight="700" fill="#0B1020" letter-spacing="-0.02em">
+    Embedded bill infrastructure.
+  </text>
+  <text x="92" y="366" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial" font-size="24" font-weight="600" fill="rgba(11,16,32,0.70)" letter-spacing="-0.01em">
+    Recurring bill management for modern financial institutions.
+  </text>
+
+  <rect x="92" y="430" width="1016" height="1" fill="rgba(120,140,180,0.22)" />
+
+  <text x="92" y="474" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial" font-size="16" font-weight="600" fill="rgba(11,16,32,0.62)">
+    SOC 2 posture • 30–45 day rollout • Native-feeling UX
+  </text>
+</svg>
+
+

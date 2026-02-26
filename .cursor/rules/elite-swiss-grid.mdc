@@ -1,0 +1,32 @@
+---
+description: Elite Swiss-grid design system guardrails (spacing, type, cards, buttons)
+alwaysApply: true
+---
+
+# Elite Swiss Grid (ScribeUp)
+
+## Spacing (Rhythm)
+- Use a strict **120px padding-block** for major sections (hero + primary bands). Prefer shared utilities/tokens over per-page one-offs.
+- Default header stack spacing:
+  - Wayfinder/subheader → H2: **48px min**
+  - H2 → first content block/grid: **64px**
+  - Between major sections: **120px**
+
+## Alignment (The Spine)
+- All section titles, wayfinders, and card content must align to a single left rail (`container-page` spine). No drifting icons/text.
+
+## Typography (Lockdown)
+- Headers: **letter-spacing: -0.05em**.
+- Sub-headers/wayfinders: **14px**, uppercase, **0.15em** tracking, **500** weight (never bold).
+- Wayfinder node: **6px square** with **1px offset stroke**; align to the *first line* cap-height via inline-flex.
+
+## Cards (Double-border physics)
+- Default card: `border: 1px solid #E2E8F0`.
+- “Outer halo”: `box-shadow: 0 0 0 4px #F8FAFC` (avoid heavy drop shadows).
+- Any internal graphic lives in a recessed well: `background: #F8FAFC` + **32px** padding.
+- In grids, ensure CTA buttons align to a baseline using `mt-auto` / flex column.
+
+## Buttons (Electric Slate)
+- No solid cobalt fills.
+- Primary style: bg `#EFF6FF`, text `#2563EB`, border `rgba(37,99,235,0.1)`, plus a **1px inner top specular** highlight.
+

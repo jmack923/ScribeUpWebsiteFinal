@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+dist/
+dist-ssr/
+*.log
+.env
+.env.*
+
+
+
+.vercel
+
+# Local media scratchpad (should never ship)
+Video Demo/
