@@ -45,8 +45,8 @@ function TeamCard({ person }: { person: (typeof TEAM)[number] }) {
 }
 
 const FEATURED = [
-  { alt: "TechCrunch", src: "assets/about/techcrunch.png" },
-  { alt: "Wall Street Journal", src: "assets/about/wsj.png" },
+  { alt: "TechCrunch", src: "assets/about/techcrunch-latest.png" },
+  { alt: "Wall Street Journal", src: "assets/about/wsj-latest.png" },
   { alt: "Fox Business", src: "assets/about/fox-business.png" },
 ];
 
@@ -79,10 +79,19 @@ export default function About() {
               transition={{ duration: 0.52, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
               <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75] max-w-[72ch]">
-                ScribeUp was born from a simple frustration: the hassle of managing unwanted subscription charges. As MIT students, we experienced firsthand how easy it was to lose track of recurring payments—streaming, software, memberships. That pain point became a mission to empower people with a smarter way to manage their digital services.
+                Subscriptions were supposed to make life easier. And they have. But at the user level, they also became fragmented, hard to track, and surprisingly expensive. Free trials convert. Intro pricing expires. Charges hide in statements and inboxes.
               </p>
               <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75] max-w-[72ch]">
-                Today we give financial institutions an embeddable solution so their customers can track, optimize, and save on subscriptions and bills. Banks and fintechs use ScribeUp to boost engagement, drive loyalty, and unlock new revenue—with a seamless, intuitive experience.
+                The real problem is not the services. It is the lack of visibility and control from our financial tools.
+              </p>
+              <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75] max-w-[72ch]">
+                Modern life runs on recurring payments, yet our payment forms were not built for a world of payment-on-file and autopay.
+              </p>
+              <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75] max-w-[72ch]">
+                We started ScribeUp to fix that.
+              </p>
+              <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75] max-w-[72ch]">
+                ScribeUp brings clarity to recurring spending, makes control effortless, and helps people avoid overpaying, delivered directly through the financial partners you already trust.
               </p>
             </motion.div>
           </div>
@@ -206,7 +215,7 @@ export default function About() {
                           alt={p.alt}
                           className={`w-auto object-contain object-center opacity-95 ${
                             p.alt === "TechCrunch"
-                              ? "h-[38px] sm:h-[40px]"
+                              ? "h-[42px] sm:h-[44px]"
                               : p.alt === "Wall Street Journal"
                                 ? "h-[36px] sm:h-[38px]"
                                 : "h-[38px] sm:h-[40px]"

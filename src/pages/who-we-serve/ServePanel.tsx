@@ -110,7 +110,7 @@ export function ServePanel({
                   Premium upsell. Strategic cross‑sell.
                 </h3>
                 <p className="mt-3 text-[14px] md:text-[15px] text-slate-600 leading-[1.6] max-w-[52ch] mx-auto">
-                  Use bill moments to surface the right product—personal loans, EWA, insurance—at the right time.
+                  Use bill moments to surface the right product —personal loans, EWA, insurance & more —at the right time.
                 </p>
               </div>
 
@@ -137,20 +137,20 @@ export function ServePanel({
                         {
                           icon: "lucide:crown",
                           title: "Premium upsell",
-                          desc: "Park advanced functionality into your premium plan to drive upgrade",
+                          desc: "Park advanced functionality into your premium plan to drive upgrades",
                           tag: "Upsell",
                         },
                         {
-                          icon: "lucide:banknote",
-                          title: "Cross-sell",
+                          icon: "lucide:refresh-cw",
+                          title: "Refinancing",
                           desc: "Refinancing nudges when we find bills from competing providers",
-                          tag: "Lending",
+                          tag: "Refinance",
                         },
                         {
-                          icon: "lucide:wallet",
-                          title: "Inflection point nudges",
-                          desc: "Nudges for EWA, advances or loans to support users pay bills.",
-                          tag: "Nudges",
+                          icon: "lucide:target",
+                          title: "Personalized Cross-sell",
+                          desc: "Proactive nudges for your products to support a user's bills",
+                          tag: "Cross-Sell",
                         },
                       ].map((card, idx) => (
                         <motion.div
@@ -175,16 +175,15 @@ export function ServePanel({
                                   <div className="text-[13.5px] font-semibold tracking-[-0.02em] text-slate-900 leading-[1.2]">
                                     {card.title}
                                   </div>
-                                  <p className="mt-1 text-[12px] md:text-[12.5px] leading-[1.5] text-slate-600 max-w-[56ch]">
+                                  <p className={`mt-1 text-[12px] md:text-[12.5px] leading-[1.5] text-slate-600 max-w-[56ch] ${card.title === "Personalized Cross-sell" ? "whitespace-normal md:whitespace-nowrap" : ""}`}>
                                     {card.desc}
                                   </p>
                                 </div>
                               </div>
-                              <div className="shrink-0 hidden sm:flex items-center gap-2">
+                              <div className="shrink-0 hidden sm:flex items-center">
                                 <span className="inline-flex h-6 items-center px-2.5 rounded-full border border-slate-200/80 bg-slate-50 text-[10px] font-semibold uppercase tracking-[0.11em] text-slate-500">
                                   {card.tag}
                                 </span>
-                                <Icon icon="lucide:chevron-right" width={14} height={14} className="text-slate-400 group-hover:text-slate-600 transition-colors" />
                               </div>
                             </div>
                           </div>

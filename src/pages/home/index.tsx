@@ -142,8 +142,6 @@ export default function Home() {
   const segmentParallaxY = useTransform(segmentScroll, [0, 1], [isSmallHero ? 4 : 7, isSmallHero ? -4 : -7]);
   const segmentSweepX = useTransform(segmentScroll, [0, 1], ["-35%", "135%"]);
   const [paymentOverlayMode, setPaymentOverlayMode] = React.useState<PaymentOverlayMode>("brands");
-  const [paymentCopyIdx, setPaymentCopyIdx] = React.useState<0 | 1>(0);
-  const [paymentCopyHover, setPaymentCopyHover] = React.useState(false);
   const [heroCursorVisible, setHeroCursorVisible] = React.useState(false);
   const [heroCursorPressed, setHeroCursorPressed] = React.useState(false);
   // Hero headline: typewriter cycle on the key noun (elite “living system” feel).
@@ -315,21 +313,6 @@ export default function Home() {
     heroOrbitCalItems.length,
     heroOrbitRightItems.length,
   ]);
-
-  // Payment Primacy copy: rotate the “long paragraph” so the section isn’t a wall of text.
-  const paymentCopyRef = React.useRef<HTMLDivElement | null>(null);
-  const paymentCopyInView = useInView(paymentCopyRef as any, { margin: "-35% 0px -45% 0px", once: true });
-  React.useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-    if (mq?.matches) return;
-    if (!paymentCopyInView) return;
-    if (paymentCopyHover) return;
-    const id = window.setInterval(() => {
-      setPaymentCopyIdx((v) => (v === 0 ? 1 : 0));
-    }, 9000);
-    return () => window.clearInterval(id);
-  }, [paymentCopyInView, paymentCopyHover]);
 
   const applyHeroMove = React.useCallback(() => {
     heroMoveRaf.current = null;
@@ -779,7 +762,7 @@ export default function Home() {
             <h2 className="mt-3 md:mt-4 section-title leading-[1.08] text-[var(--ink)] max-w-[32ch] text-balance mx-auto lg:mx-0">
               Customers achieve <span className="text-[#2563EB]">5x ROI</span> with ScribeUp&apos;s bill management solutions.
             </h2>
-            <p className="mt-6 text-[14px] leading-[1.6] text-slate-600 max-w-[70ch] mx-auto lg:mx-0">
+            <p className="mt-6 copy-lede max-w-[62ch] mx-auto lg:mx-0">
               Drive measurable outcomes that reinforce your product as the primary financial home.
             </p>
           </motion.div>
@@ -846,7 +829,11 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.65 }}
                 transition={{ duration: 0.52, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
               >
-                Your customers expect subscription management from their primary financial app
+                Your{" "}
+                <span className="text-primary font-semibold">
+                  customers expect subscription management
+                </span>{" "}
+                from their primary financial app
               </motion.h2>
               <motion.p
                 className="mt-4 copy-lede max-w-[62ch] mx-auto lg:mx-0"
@@ -855,21 +842,8 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.52, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
-                Recurring bills are one of the biggest sources of financial frustration for consumers—and one of the biggest opportunities for banking apps.
+                If your financial app doesn’t help customers manage their bills, they’ll turn to one that does.
               </motion.p>
-              {/* premium quote treatment (balances the stage so the left side doesn’t “end early”) */}
-              <motion.div
-                className="mt-8 rounded-[24px] border border-slate-200/70 bg-white px-6 py-5 relative overflow-hidden"
-                initial={reducedMotion ? false : { opacity: 0, y: 12, scale: 0.995 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.55 }}
-                transition={{ duration: 0.55, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <div aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-[2px] bg-blue-500/55" />
-                <p className="text-[13px] md:text-[14px] font-medium text-slate-700 leading-[1.65] tracking-[-0.01em]">
-                  <span className="text-blue-600/80">—</span> If your financial app cannot help customers manage their bills, someone else&apos;s will.
-                </p>
-              </motion.div>
             </motion.div>
 
             {/* Right (55%): shared-wall bento (match Integration card system) */}
@@ -883,7 +857,7 @@ export default function Home() {
               <div className="relative bg-white">
                 <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-blue-500/45" />
 
-                {/* Demand signals */}
+                {/* Consumer demand */}
                 <div className="px-4 sm:px-6 pt-5 sm:pt-6 pb-4 sm:pb-5">
                   <div className="flex items-center justify-between gap-4 mb-5">
                     <div className="flex items-center gap-3">
@@ -891,7 +865,7 @@ export default function Home() {
                         <Icon icon="lucide:trending-up" width={16} height={16} className="text-blue-700/85" />
                       </div>
                       <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
-                        Demand signals
+                        Consumer Demand
                       </div>
                     </div>
                   <div className={`h-1.5 w-1.5 rounded-full bg-blue-500 ${isSmallHero ? "opacity-70" : "animate-pulse"}`} />
@@ -1066,37 +1040,12 @@ export default function Home() {
               <h2 className="mt-0 mb-4 section-title max-w-[24ch] leading-[1.08] mx-auto lg:mx-0">
                 Bring your payment forms to the subscription age
               </h2>
-              <div
-                ref={paymentCopyRef as any}
-                className="mt-2 min-h-[80px] flex items-start justify-center lg:justify-start"
-                onMouseEnter={() => setPaymentCopyHover(true)}
-                onMouseLeave={() => setPaymentCopyHover(false)}
-              >
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={paymentCopyIdx}
-                    className="copy-lede text-center lg:text-left"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    {paymentCopyIdx === 0 ? (
-                      <>
-                When customers pay recurring bills with your cards or accounts, auto-detect, track and control those bills inside your app. Your payment forms become the gateway to full bill visibility and control.
-                      </>
-                    ) : (
-                      <>
-                As users find bills on external financial accounts, we prompt them to switch them to your card or account with a single click. This activates the full tracking, visibility, and control capabilities your payment forms now support.
-                      </>
-                    )}
-                  </motion.p>
-                </AnimatePresence>
+              <div className="mt-2 min-h-[80px] flex items-start justify-center lg:justify-start">
+                <p className="copy-lede text-center lg:text-left text-balance">
+                  Your payment forms unlock bill detection and control, driving users to move external bills onto your
+                  accounts
+                </p>
               </div>
-                <div className="mt-3 flex items-center justify-center lg:justify-start gap-2 text-[11px] font-semibold text-slate-500">
-                  <span className={`h-1.5 w-1.5 rounded-full ${paymentCopyIdx === 0 ? "bg-blue-600/65" : "bg-slate-300"}`} />
-                  <span className={`h-1.5 w-1.5 rounded-full ${paymentCopyIdx === 1 ? "bg-emerald-600/60" : "bg-slate-300"}`} />
-                </div>
             </motion.div>
             <motion.div
               className="order-first lg:order-none min-w-0 w-full flex justify-center lg:justify-end overflow-hidden"

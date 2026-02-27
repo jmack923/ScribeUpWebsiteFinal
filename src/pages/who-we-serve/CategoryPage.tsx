@@ -361,9 +361,24 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
               >
                 <div className="grid md:grid-cols-3 gap-6 w-full max-w-[1100px] mx-auto text-left">
                   {[
-                    { name: "Service Credit Union", quote: "TBD quote.", attribution: "TBD, Title" },
-                    { name: "Chartway Credit Union", quote: "TBD quote.", attribution: "TBD, Title" },
-                    { name: "Advia Credit Union", quote: "TBD quote.", attribution: "TBD, Title" },
+                    {
+                      name: "Service Credit Union",
+                      quote:
+                        "By proactively addressing the challenge of subscription fatigue, we strengthen our position as a trusted financial partner and demonstrate our commitment to member financial well-being.",
+                      attribution: "David Araujo, President and CEO",
+                    },
+                    {
+                      name: "Advia Credit Union",
+                      quote:
+                        "By partnering with ScribeUp, we're giving our members a simple, secure way to see, manage, and stop recurring charges directly inside their Digital Banking experience. This partnership reflects our commitment to offer members intuitive tech that provides real financial advantages.",
+                      attribution: "Joli Hensley, VP of DX & Innovation",
+                    },
+                    {
+                      name: "Chartway Credit Union",
+                      quote:
+                        "The integration through Q2 Innovation Studio was incredibly smooth. Within 4 weeks, we had recurring bill management live in our digital banking experience. And, the member response has been overwhelmingly positive! The fact that we're offering this tool at no cost to them has been a real game changer.",
+                      attribution: "Esteban Guerra, Digital Manager",
+                    },
                   ].map(({ name, quote, attribution }) => (
                     <motion.div
                       key={name}
@@ -450,113 +465,6 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
           </div>
         </section>
       ) : null}
-
-      {/* Fintechs: Testimonials (same layout as Credit Unions) */}
-      {isFintech && (
-        <section
-          data-reveal="section"
-          className="relative mt-0 pt-14 md:pt-18 pb-14 md:pb-18 bg-[#FBFCFE] overflow-hidden border-t border-b border-slate-200/60"
-        >
-          <div className="container-page relative z-10">
-            <div className="mx-auto w-full max-w-[1100px]">
-              <motion.div
-                className="max-w-2xl mx-auto text-center"
-                initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.55 }}
-                transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <motion.h2
-                  className="text-[26px] sm:text-[28px] md:text-[28px] leading-[1.15] font-semibold tracking-[-0.05em] text-[var(--ink)] mx-auto"
-                  initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.65 }}
-                  transition={{ duration: 0.52, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  A word from our partners
-                </motion.h2>
-              </motion.div>
-              <motion.div
-                className="mt-6 w-full"
-                initial={reducedMotion ? false : "hidden"}
-                whileInView={reducedMotion ? undefined : "show"}
-                viewport={{ once: false, amount: 0.2 }}
-                variants={{
-                  hidden: {},
-                  show: { transition: { staggerChildren: 0.1 } },
-                }}
-              >
-                <div className="grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-4 md:gap-5 w-full max-w-[1040px] mx-auto">
-                  {[
-                    {
-                      name: "DailyPay",
-                      quote:
-                        "The experience feels native inside the app. Users stay in-flow—and we keep the UI consistent across surfaces.",
-                      attribution: "Product Lead",
-                      logoSrc: withBase("/assets/clients/dailypay-transparent.png"),
-                      logoMaxWidthClass: "max-w-[110px]",
-                    },
-                    {
-                      name: "NerdWallet",
-                      quote:
-                        "The embedded approach is clean and fast to roll out. It gives us a polished experience without adding friction.",
-                      attribution: "Growth & Partnerships",
-                      logoSrc: withBase("/assets/clients/nerdwallet.svg"),
-                      logoMaxWidthClass: "max-w-[122px]",
-                    },
-                    {
-                      name: "Kudos",
-                      quote:
-                        "It’s the rare integration that improves the product feel immediately—clear, subtle, and built for real user behavior.",
-                      attribution: "PM, Consumer Experience",
-                      logoSrc: withBase("/assets/clients/kudos.png"),
-                      logoMaxWidthClass: "max-w-[84px]",
-                    },
-                  ].map(({ name, quote, attribution, logoSrc, logoMaxWidthClass }) => (
-                    <motion.div
-                      key={name}
-                      className="group relative overflow-visible"
-                      variants={{
-                        hidden: { opacity: 0, y: isMobile ? 6 : 16 },
-                        show: { opacity: 1, y: 0, transition: { duration: 0.58, ease: [0.16, 1, 0.3, 1] } },
-                      }}
-                    >
-                      {/* Subtle stacked depth (cleaner + less noisy) */}
-                      <div aria-hidden="true" className="pointer-events-none absolute inset-[3px] translate-x-1 translate-y-1 rounded-[20px] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFC_100%)] border border-slate-200/55 shadow-[0_10px_22px_rgba(2,6,23,0.04)] opacity-35" />
-
-                      {/* Foreground card */}
-                      <div className="relative rounded-[20px] bg-[linear-gradient(180deg,#FFFFFF_0%,#F8FAFC_100%)] border border-slate-200/70 p-5 shadow-[0_0_0_4px_#FBFCFE,0_12px_34px_-18px_rgba(2,6,23,0.08)] transition-[box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-slate-300/70 group-hover:shadow-[0_0_0_4px_#FBFCFE,0_18px_44px_-22px_rgba(2,6,23,0.11)] flex flex-col min-h-[196px]">
-                        {/* subtle top accent */}
-                        <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-[#2563EB]/18 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                        <p className="text-slate-700 text-[14px] leading-[1.6] flex-1 font-normal">
-                          &ldquo;{quote}&rdquo;
-                        </p>
-
-                        <div className="mt-5 pt-3.5 border-t border-slate-200/70">
-                          <div className="text-[13.5px] font-semibold text-slate-900 leading-tight">{name}</div>
-                          <div className="mt-0.5 text-[12.5px] font-medium text-slate-500">{attribution}</div>
-                          <div className="mt-3 h-6 flex items-end">
-                            <img
-                              src={logoSrc}
-                              alt={`${name} logo`}
-                              width={128}
-                              height={24}
-                              loading="lazy"
-                              decoding="async"
-                              className={`h-auto max-h-[18px] w-auto ${logoMaxWidthClass} object-contain object-left opacity-90`}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Fintechs: Integration (right after testimonials) */}
       {isFintech && (
@@ -654,6 +562,21 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
+            <motion.div
+              className="mt-7 flex justify-center"
+              initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.45 }}
+              transition={{ duration: 0.48, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Button
+                as={RouteLink as any}
+                to="/solution"
+                className="nav-btn-base btn-s-tier btn-arrow-lead !h-[40px] !px-6 text-[12.5px] font-semibold inline-flex items-center no-underline bg-white/80 text-slate-600 border border-slate-200/80 hover:bg-white hover:border-slate-300 hover:text-slate-900 transition-colors shadow-sm"
+              >
+                Explore our features
+              </Button>
             </motion.div>
           </div>
         </section>
