@@ -35,7 +35,7 @@ type StoryStep = {
 const steps: StoryStep[] = [
   {
     title: "Find recurring bills",
-    detail: "Identify recurring bills paid on cards and accounts. Surface subscriptions from external institutions.",
+    detail: "Auto-detect recurring bills on your cards and accounts. Surface subscriptions from external institutions.",
     stat: "Uncover hidden subscriptions and recurring charges across institutions",
     bullets: [
       "Spotify • $12.99 • Detected",
@@ -55,7 +55,7 @@ const steps: StoryStep[] = [
   },
   {
     title: "Manage with one click",
-    detail: "Update payment‑on‑file and cancel subscriptions in one click across thousands of merchants.",
+    detail: "Update payment-on-file, cancel subscriptions, action savings and more with just one-click",
     stat: "6+ additional monthly card swipes after activation",
     bullets: [
       "Move Netflix to your card",

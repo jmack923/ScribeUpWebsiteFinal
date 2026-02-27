@@ -932,7 +932,7 @@ export default function Home() {
                             <div className="mt-1 text-[12px] text-slate-500 leading-relaxed">Amongst US consumers</div>
                           </div>
                         </div>
-                        <span className="text-[10px] font-bold text-slate-600 bg-[#F8FAFC] border border-slate-200/70 px-2 py-0.5 rounded-[8px] uppercase tracking-wider shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+                        <span className="text-[8.5px] font-bold text-slate-600 bg-[#F8FAFC] border border-slate-200/70 px-1.5 py-px rounded-md uppercase tracking-wider shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] whitespace-nowrap">
                           Consumers
                         </span>
                       </div>
@@ -956,7 +956,7 @@ export default function Home() {
                             <div className="mt-1 text-[12px] text-slate-500 leading-relaxed">For subscription management</div>
                           </div>
                         </div>
-                        <span className="text-[10px] font-bold text-slate-600 bg-[#F8FAFC] border border-slate-200/70 px-2 py-0.5 rounded-[8px] uppercase tracking-wider shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]">
+                        <span className="text-[8.5px] font-bold text-slate-600 bg-[#F8FAFC] border border-slate-200/70 px-1.5 py-px rounded-md uppercase tracking-wider shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] whitespace-nowrap">
                           Gen Z + Millennials
                         </span>
                       </div>
@@ -966,14 +966,14 @@ export default function Home() {
 
                 <div aria-hidden="true" className="h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-                {/* User happiness */}
+                {/* Outcomes we deliver */}
                 <div className="px-4 sm:px-6 py-5 sm:py-6">
                   <div className="flex items-center gap-3 mb-5">
                     <div className="h-8 w-8 rounded-[10px] bg-emerald-50 border border-emerald-200/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] flex items-center justify-center shrink-0">
                       <Icon icon="lucide:smile-plus" width={16} height={16} className="text-emerald-700/80" />
                     </div>
                     <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
-                      User happiness
+                      Outcomes we deliver
                     </div>
                   </div>
 
@@ -995,8 +995,7 @@ export default function Home() {
                       <div className="text-[24px] font-bold text-slate-900 tabular-nums tracking-tight">
                         <MetricCount metric="60%" />
                       </div>
-                      <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Outcomes</div>
-                      <div className="mt-2 text-[11.5px] text-slate-600 leading-snug">Discover a recurring bill they didn&apos;t realize</div>
+                      <div className="mt-2 text-[11.5px] text-slate-600 leading-snug">of users discover a bill they didn&apos;t realize they were paying for</div>
                     </motion.div>
                     <motion.div
                       className="group relative bg-white border border-slate-200/70 rounded-[16px] sm:rounded-[20px] p-3.5 sm:p-4 transition-[box-shadow,border-color] duration-300 hover:border-slate-300/70 hover:shadow-[0_0_0_4px_#F8FAFC,0_10px_24px_-18px_rgba(2,6,23,0.12)]"
@@ -1009,8 +1008,7 @@ export default function Home() {
                       <div className="text-[24px] font-bold text-slate-900 tabular-nums tracking-tight">
                         <MetricCount metric="4.5+" />
                       </div>
-                      <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Rating</div>
-                      <div className="mt-2 text-[11.5px] text-slate-600 leading-snug">Average user rating</div>
+                      <div className="mt-2 text-[11.5px] text-slate-600 leading-snug">average user rating (out of 5)</div>
                     </motion.div>
                   </motion.div>
 
@@ -1075,7 +1073,7 @@ export default function Home() {
               transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2 className="mt-0 mb-4 section-title max-w-[24ch] leading-[1.08] mx-auto lg:mx-0">
-                Empower your payment forms—bills tracked the moment they&apos;re on file
+                Bring your payment forms to the subscription age
               </h2>
               <div className="mt-3 min-h-[32px] flex items-center">
                 <AnimatePresence mode="wait">
@@ -1088,7 +1086,7 @@ export default function Home() {
                     transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {paymentOverlayMode === "brands"
-                      ? "Put it on file — bills tracked in your app."
+                      ? "Put it on file — tracked in your app"
                       : "Calendar sync + savings nudges — before the charge hits."}
                   </motion.p>
                 </AnimatePresence>
@@ -1111,7 +1109,7 @@ export default function Home() {
                   >
                     {paymentCopyIdx === 0 ? (
                       <>
-                When customers pay recurring bills with your cards or accounts, ScribeUp automatically detects and tracks those bills inside your app. No redirects, no extra steps—your branded payment forms become the gateway to full bill visibility and control.
+                When customers pay recurring bills with your cards or accounts, auto-detect, track and control those bills inside your app. Your payment forms become the gateway to full bill visibility and control.
                       </>
                     ) : (
                       <>

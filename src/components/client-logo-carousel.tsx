@@ -13,6 +13,8 @@ type ClientLogo = {
   spacingX?: number;
   /** Override left margin only (px) to tighten/loosen gap before this logo */
   marginLeft?: number;
+  /** Override right margin only (px) to tighten gap after this logo */
+  marginRight?: number;
 };
 
 function withBase(path: string) {
@@ -21,15 +23,15 @@ function withBase(path: string) {
 }
 
 // Logo files in public/assets/clients/ — credit unions first (alphabetical), then others.
-// Scales normalized to a tight band (0.88–1.12) so no logo dominates; spacing is uniform.
+// Scales normalized so logos feel similar to the natural eye; NerdWallet smaller, credit unions larger.
 const clients: ClientLogo[] = [
-  { name: "Advia Credit Union", src: withBase("assets/clients/advia.png"), fallback: "Advia Credit Union", scale: 1.02 },
-  { name: "Chartway Credit Union", src: withBase("assets/clients/chartway-transparent.png"), fallback: "Chartway Credit Union", scale: 1.06, spacingX: -10 },
-  { name: "Service Credit Union", src: withBase("assets/clients/service-cu-transparent.png"), fallback: "Service Credit Union", scale: 1.0, offsetY: -4 },
-  { name: "NerdWallet", src: withBase("assets/clients/nerdwallet.svg"), fallback: "NerdWallet", scale: 0.96 },
+  { name: "Advia Credit Union", src: withBase("assets/clients/advia.png"), fallback: "Advia Credit Union", scale: 1.38 },
+  { name: "Chartway Credit Union", src: withBase("assets/clients/chartway-transparent.png"), fallback: "Chartway Credit Union", scale: 1.38, spacingX: -10 },
+  { name: "Service Credit Union", src: withBase("assets/clients/service-cu-transparent.png"), fallback: "Service Credit Union", scale: 1.28, offsetY: -4 },
+  { name: "NerdWallet", src: withBase("assets/clients/nerdwallet.svg"), fallback: "NerdWallet", scale: 0.68, marginLeft: -16, marginRight: -16 },
   { name: "DailyPay", src: withBase("assets/clients/dailypay-transparent.png"), fallback: "DailyPay", scale: 0.82 },
-  { name: "Kudos", src: withBase("assets/clients/kudos.png"), fallback: "Kudos", scale: 1.15 },
-  { name: "Super.com", src: withBase("assets/clients/super.png"), fallback: "Super.com", scale: 0.86 },
+  { name: "Kudos", src: withBase("assets/clients/kudos.png"), fallback: "Kudos", scale: 1.28 },
+  { name: "Super.com", src: withBase("assets/clients/super.png"), fallback: "Super.com", scale: 0.72, marginLeft: -12, marginRight: -12, offsetY: 3 },
 ];
 
 function ClientLogoItem({ item }: { item: ClientLogo }) {
@@ -40,8 +42,8 @@ function ClientLogoItem({ item }: { item: ClientLogo }) {
     <div
       className="group relative inline-flex h-10 md:h-12 min-w-[120px] md:min-w-[136px] flex-shrink-0 items-center justify-center px-2 [align-self:center]"
       style={
-        item.spacingX != null || item.marginLeft != null
-          ? { marginLeft: item.marginLeft ?? item.spacingX, marginRight: item.spacingX }
+        item.spacingX != null || item.marginLeft != null || item.marginRight != null
+          ? { marginLeft: item.marginLeft ?? item.spacingX, marginRight: item.marginRight ?? item.spacingX }
           : undefined
       }
       aria-label={item.name}
