@@ -517,8 +517,7 @@ export default function Home() {
             >
               {/* Constrained column (Atomic-style): keep the hero copy in a precise stacked lane */}
               <div className="max-w-[600px] mx-auto xl:mx-0">
-              <p className="wayfinder w-fit mx-auto xl:mx-0">ScribeUp</p>
-              <h1 className="mt-8 mb-6 text-pretty text-[clamp(1.85rem,5vw,3.45rem)] md:text-[clamp(2.2rem,6.0vw,3.45rem)] leading-[1.15] md:leading-[1.08] lg:leading-[1.02] tracking-[-0.05em] font-medium text-[var(--ink)] max-w-full">
+              <h1 className="mt-2 mb-6 text-pretty text-[clamp(1.85rem,5vw,3.45rem)] md:text-[clamp(2.2rem,6.0vw,3.45rem)] leading-[1.15] md:leading-[1.08] lg:leading-[1.02] tracking-[-0.05em] font-medium text-[var(--ink)] max-w-full">
                 <span className="block">Turn your banking app</span>
                 <span className="block">into the</span>
                 <span className="block w-full text-center xl:text-left">
@@ -839,7 +838,7 @@ export default function Home() {
             transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="mt-3 md:mt-4 section-title leading-[1.08] text-[var(--ink)] max-w-[32ch] text-balance mx-auto lg:mx-0">
-              Customers achieve <span className="text-[#2563EB]">5x ROI</span> with ScribeUp&apos;s bill management solutions.
+              Clients achieve <span className="text-[#2563EB]">5x ROI</span> with ScribeUp&apos;s bill management solutions.
             </h2>
             <p className="mt-6 copy-lede max-w-[62ch] mx-auto lg:mx-0">
               Drive measurable outcomes that reinforce your product as the primary financial home.
@@ -1349,6 +1348,26 @@ export default function Home() {
                 ))}
               </div>
             </div>
+          </motion.div>
+
+          <motion.div
+            className="mt-6 flex justify-center"
+            initial={reducedMotion ? false : { opacity: 0, y: 10 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.65 }}
+            transition={{ duration: 0.5, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Button
+              as="a"
+              href="https://app.vanta.com/scribeup.io/trust/mxpqv43sqxcjv3o3pqze4t"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="light"
+              className="group h-[34px] px-5 rounded-full border border-slate-200 bg-white/50 hover:bg-white hover:border-slate-300 text-[13px] font-semibold text-slate-700 transition-all"
+              endContent={<Icon icon="lucide:arrow-right" width={16} height={16} className="text-slate-400 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all" />}
+            >
+              Visit Trust Center
+            </Button>
           </motion.div>
 
         </div>

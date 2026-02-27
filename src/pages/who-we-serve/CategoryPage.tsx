@@ -366,23 +366,29 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
                       quote:
                         "By proactively addressing the challenge of subscription fatigue, we strengthen our position as a trusted financial partner and demonstrate our commitment to member financial well-being.",
                       attribution: "David Araujo, President and CEO",
+                      logoSrc: withBase("/assets/clients/service-cu-transparent.png"),
+                      logoClassName: "max-w-[188px]",
                     },
                     {
                       name: "Advia Credit Union",
                       quote:
                         "By partnering with ScribeUp, we're giving our members a simple, secure way to see, manage, and stop recurring charges directly inside their Digital Banking experience. This partnership reflects our commitment to offer members intuitive tech that provides real financial advantages.",
                       attribution: "Joli Hensley, VP of DX & Innovation",
+                      logoSrc: withBase("/assets/clients/advia-latest.png"),
+                      logoClassName: "max-w-[172px]",
                     },
                     {
                       name: "Chartway Credit Union",
                       quote:
                         "The integration through Q2 Innovation Studio was incredibly smooth. Within 4 weeks, we had recurring bill management live in our digital banking experience. And, the member response has been overwhelmingly positive! The fact that we're offering this tool at no cost to them has been a real game changer.",
                       attribution: "Esteban Guerra, Digital Manager",
+                      logoSrc: withBase("/assets/clients/chartway-latest.png"),
+                      logoClassName: "max-w-[198px]",
                     },
-                  ].map(({ name, quote, attribution }) => (
+                  ].map(({ name, quote, attribution, logoSrc, logoClassName }) => (
                     <motion.div
                       key={name}
-                      className="group relative bg-white border border-slate-200/70 rounded-[20px] px-6 py-8 shadow-[0_0_0_4px_#F8FAFC,0_12px_40px_-14px_rgba(2,6,23,0.08)] transition-[box-shadow,border-color] duration-300 ease-out hover:shadow-[0_0_0_4px_#F8FAFC,0_18px_52px_-18px_rgba(2,6,23,0.11)] flex flex-col min-h-[180px] overflow-hidden"
+                      className="group relative bg-white border border-slate-200/70 rounded-[20px] px-6 py-6 shadow-[0_0_0_4px_#F8FAFC,0_12px_40px_-14px_rgba(2,6,23,0.08)] transition-[box-shadow,border-color] duration-300 ease-out hover:shadow-[0_0_0_4px_#F8FAFC,0_18px_52px_-18px_rgba(2,6,23,0.11)] flex flex-col min-h-[180px] overflow-hidden"
                       variants={{
                         hidden: { opacity: 0, y: isMobile ? 0 : 14 },
                         show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
@@ -391,12 +397,22 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
                       {/* Subtle top accent */}
                       <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-[#2563EB]/18 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
-                      <p className="text-slate-700 text-[16px] leading-[1.6] font-normal relative z-10 mb-6">
+                      <p className="text-slate-700 text-[13px] md:text-[13.5px] leading-[1.55] font-normal relative z-10 mb-5">
                         &ldquo;{quote}&rdquo;
                       </p>
                       <div className="mt-auto pt-0 relative z-10">
-                        <p className="text-[14px] font-semibold text-slate-900">{attribution}</p>
-                        <p className="text-[13px] font-medium text-slate-500 mt-0.5">{name}</p>
+                        <p className="text-[13px] font-semibold text-slate-900 leading-[1.35]">{attribution}</p>
+                        <div className="mt-3 h-10 flex items-center">
+                          <img
+                            src={logoSrc}
+                            alt={`${name} logo`}
+                            width={150}
+                            height={24}
+                            loading="lazy"
+                            decoding="async"
+                            className={`h-auto max-h-[34px] w-auto ${logoClassName} object-contain object-left opacity-90`}
+                          />
+                        </div>
                       </div>
                     </motion.div>
                   ))}
