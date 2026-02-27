@@ -144,11 +144,6 @@ export function SiteFooter() {
                 <h4 className="text-[12px] font-semibold uppercase tracking-[0.20em] text-slate-50">Security</h4>
                 <ul className="mt-5 space-y-3 md:space-y-4 text-[14px] leading-[1.8] text-slate-300/80">
                   <li>
-                    <Link as={RouteLink} to="/trust-center" className="footer-link">
-                      Trust Center
-                    </Link>
-                  </li>
-                  <li>
                     <Link as={RouteLink} to="/privacy" className="footer-link">
                       Privacy
                     </Link>

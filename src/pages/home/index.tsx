@@ -1351,23 +1351,6 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div
-            className="mt-6 flex justify-center"
-            initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.65 }}
-            transition={{ duration: 0.5, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Button
-              as={RouteLink as any}
-              to="/about"
-              variant="light"
-              className="group h-[34px] px-5 rounded-full border border-slate-200 bg-white/50 hover:bg-white hover:border-slate-300 text-[13px] font-semibold text-slate-700 transition-all"
-              endContent={<Icon icon="lucide:arrow-right" width={16} height={16} className="text-slate-400 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all" />}
-            >
-              Visit Trust Center
-            </Button>
-          </motion.div>
         </div>
       </section>
     </div>

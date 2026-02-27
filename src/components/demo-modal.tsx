@@ -68,13 +68,13 @@ export function DemoModal() {
 
               <div className="text-center mb-8">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.20em] text-slate-500 mb-2">
-                  Reach Out &mdash; Request a Demo
+                  Connect with ScribeUp
                 </p>
                 <h3 className="text-[20px] md:text-[22px] font-semibold tracking-[-0.04em] text-slate-900 mb-2 leading-[1.15]">
-                  Request a demo
+                  Book a Demo
                 </h3>
                 <p className="text-sm text-slate-500">
-                  Share a bit of info and we’ll be in touch.
+                  Spend 30 minutes with the ScribeUp team and get tailored recommendations for your subscription strategy.
                 </p>
               </div>
 
@@ -138,7 +138,7 @@ export function DemoModal() {
                       className="group relative w-full h-[46px] bg-[#EFF6FF] hover:bg-[#DBEAFE] text-[#2563EB] rounded-[16px] font-semibold transition-[transform,box-shadow,background-color,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_10px_30px_rgba(2,6,23,0.06)] overflow-hidden border border-blue-600/15"
                     >
                       <div className="relative z-10 flex items-center justify-center gap-2">
-                        Book a Demo
+                        Submit
                         <Icon icon="lucide:arrow-right" width={18} height={18} className="group-hover:translate-x-1 transition-transform" />
                       </div>
                       
