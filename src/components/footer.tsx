@@ -11,60 +11,13 @@ export function SiteFooter() {
   const { openDemoModal } = useDemoModal();
   const footerTopMarginClass = pathname.startsWith("/who-we-serve/") ? "mt-0" : "mt-[120px]";
 
-  const handshake = React.useMemo(() => {
-    if (pathname.startsWith("/developer")) {
-      return {
-        kicker: "",
-        title: "Talk with an integration architect.",
-        sub: "See the embedded flow, integration path, and rollout plan — built for regulated environments.",
-        ctaLabel: "Book a demo",
-        ctaKind: "demo" as const,
-      };
-    }
-    if (pathname.startsWith("/who-we-serve/fintechs")) {
-      return {
-        kicker: "",
-        title: "See it embedded in your app.",
-        sub: "SDK, iFrame, or API — a clean path to measurable outcomes inside your product experience.",
-        ctaLabel: "Book a demo",
-        ctaKind: "demo" as const,
-      };
-    }
-    if (pathname.startsWith("/who-we-serve/credit-unions")) {
-      return {
-        kicker: "",
-        title: "Upgrade your member experience.",
-        sub: "Ship subscription management with trust-first UX and measurable outcomes inside digital banking.",
-        ctaLabel: "Request rollout plan",
-        ctaKind: "demo" as const,
-      };
-    }
-    if (pathname.startsWith("/who-we-serve/banks")) {
-      return {
-        kicker: "",
-        title: "Speak with an enterprise architect.",
-        sub: "Align deployment, compliance, and outcomes — built for Tier‑1 governance and scale.",
-        ctaLabel: "Book architecture call",
-        ctaKind: "demo" as const,
-      };
-    }
-    if (pathname.startsWith("/solution")) {
-      return {
-        kicker: "",
-        title: "Explore what bill management could look like in your app",
-        sub: "Minimal lift. Maximum user value. Clear ROI.",
-        ctaLabel: "Schedule a Demo",
-        ctaKind: "demo" as const,
-      };
-    }
-    return {
-      kicker: "",
-      title: "Explore what bill management could look like in your app",
-      sub: "Minimal lift. Maximum user value. Clear ROI.",
-      ctaLabel: "Schedule a Demo",
-      ctaKind: "demo" as const,
-    };
-  }, [pathname]);
+  const handshake = {
+    kicker: "",
+    title: "Explore what bill management could look like in your app",
+    sub: "Minimal lift. Maximum user value. Clear ROI.",
+    ctaLabel: "Schedule a Demo",
+    ctaKind: "demo" as const,
+  };
 
   return (
     <footer className={`${footerTopMarginClass} relative overflow-hidden bg-[#0A101C] border-t border-white/12`}>

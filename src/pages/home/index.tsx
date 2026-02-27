@@ -459,10 +459,11 @@ export default function Home() {
               <h1 className="mt-8 mb-6 text-pretty text-[clamp(1.85rem,5vw,3.45rem)] md:text-[clamp(2.2rem,6.0vw,3.45rem)] leading-[1.15] md:leading-[1.08] lg:leading-[1.02] tracking-[-0.05em] font-medium text-[var(--ink)] max-w-full">
                 <span className="block">Turn your banking app</span>
                 <span className="block">into the</span>
-                <span
-                  className="relative inline-flex items-baseline font-medium text-blue-700 w-fit xl:whitespace-nowrap"
-                  style={{ minWidth: `${heroWordWidthCh}ch` }}
-                >
+                <span className="block w-full text-center xl:text-left">
+                  <span
+                    className="relative inline-flex items-baseline justify-center xl:justify-start font-medium text-blue-700 w-fit xl:whitespace-nowrap"
+                    style={{ minWidth: `${heroWordWidthCh}ch` }}
+                  >
                   {isSmallHero ? (
                     <AnimatePresence mode="popLayout" initial={false}>
                       <motion.span
@@ -471,7 +472,7 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -3 }}
                         transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                        className="whitespace-nowrap inline-block"
+                        className="whitespace-nowrap inline-block text-center"
                         style={{ minWidth: `${heroWordWidthCh}ch` }}
                       >
                         {heroWordCycle[heroWordIdx]}
@@ -488,6 +489,7 @@ export default function Home() {
                       />
                     </span>
                   )}
+                  </span>
                 </span>
                 <span className="block">for a user&apos;s bills</span>
               </h1>
@@ -1064,26 +1066,9 @@ export default function Home() {
               <h2 className="mt-0 mb-4 section-title max-w-[24ch] leading-[1.08] mx-auto lg:mx-0">
                 Bring your payment forms to the subscription age
               </h2>
-              <div className="mt-3 min-h-[32px] flex items-center">
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={paymentOverlayMode}
-                    className="text-[12px] font-semibold tracking-[-0.01em] text-slate-600 mx-auto lg:mx-0"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    {paymentOverlayMode === "brands"
-                      ? "Put it on file — tracked in your app"
-                      : "Calendar sync + savings nudges — before the charge hits."}
-                  </motion.p>
-                </AnimatePresence>
-              </div>
-
               <div
                 ref={paymentCopyRef as any}
-                className="mt-5 min-h-[80px] flex items-start justify-center lg:justify-start"
+                className="mt-2 min-h-[80px] flex items-start justify-center lg:justify-start"
                 onMouseEnter={() => setPaymentCopyHover(true)}
                 onMouseLeave={() => setPaymentCopyHover(false)}
               >
@@ -1102,7 +1087,7 @@ export default function Home() {
                       </>
                     ) : (
                       <>
-                As we discover bills paid elsewhere, customers can move them to your card or account with one click and unlock the same experience. Control, clarity, and convenience reinforce your products as the default payment on file.
+                As users find bills on external financial accounts, we prompt them to switch them to your card or account with a single click. This activates the full tracking, visibility, and control capabilities your payment forms now support.
                       </>
                     )}
                   </motion.p>

@@ -337,14 +337,14 @@ export function PaymentPrimacyGraphic({
               <div className="h-2 w-px bg-blue-400/45" />
               <span className="text-[8px] text-blue-700 font-semibold">Made for bills</span>
             </div>
-          </motion.div>
-          <div className="mt-4 max-w-[200px]">
-            <div className="rounded-full border border-slate-200/70 bg-[#F8FAFC] px-3 py-1.5 text-center shadow-[0_0_0_4px_#F8FAFC]">
-              <p className="text-[10px] text-slate-700 font-semibold leading-relaxed tracking-[-0.01em]">
-                Built to be put on file—bills tracked in your app
-              </p>
+            <div className="mt-4 max-w-[200px]">
+              <div className="rounded-full border border-slate-200/70 bg-[#F8FAFC] px-3 py-1.5 text-center shadow-[0_0_0_4px_#F8FAFC]">
+                <p className="text-[10px] text-slate-700 font-semibold leading-relaxed tracking-[-0.01em]">
+                  Payment form on file = tracked in your app
+                </p>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

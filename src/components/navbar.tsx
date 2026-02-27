@@ -13,7 +13,6 @@ import logoHorizontal from "../../Logo/MAINLOGO.hoirzontal-black-text-big.svg";
 import logoSquare from "../../Logo/LOGOjustlogosquare-color.svg";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { useDemoModal } from "./demo-modal-context";
-import { Magnetic } from "./magnetic";
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState(false);
@@ -111,7 +110,7 @@ export function SiteNavbar() {
               : "bg-white/40 backdrop-blur-[14px] border border-transparent border-b border-b-white/10 shadow-none"
         } fixed top-2.5 md:top-5 left-1/2 -translate-x-1/2 z-[100] h-[58px] min-h-[58px] py-0 rounded-[28px] md:rounded-[32px] w-[calc(100%-1rem)] md:w-[calc(100%-2rem)] max-w-[1400px] px-4 md:px-8 transition-[background-color,box-shadow,border-color,backdrop-filter,transform] duration-300`}
       >
-        <NavbarContent justify="start" className="flex-1 flex items-center h-full">
+        <NavbarContent justify="start" className="flex items-center h-full">
           <NavbarBrand className="h-full flex items-center">
             <HeroLink
               as={RouteLink}
@@ -139,8 +138,8 @@ export function SiteNavbar() {
 
         {/* Desktop Navigation */}
         <NavbarContent
-          justify="center"
-          className="desktop-only-nav flex-1 items-center justify-center gap-8 lg:gap-10 h-full"
+          justify="end"
+          className="desktop-only-nav hidden md:flex items-center justify-end gap-6 lg:gap-8 h-full ml-auto"
         >
           {navItems.map((item) => {
             const hasDropdown = "dropdown" in item && Array.isArray(item.dropdown);
@@ -400,9 +399,21 @@ export function SiteNavbar() {
               </NavbarItem>
             );
           })}
+
+          <NavbarItem>
+            <Button
+              variant="flat"
+              color="default"
+              className="btn-obsidian nav-btn-base btn-arrow-lead !h-[34px] !px-3.5 text-[11.5px] font-semibold !rounded-[8px]"
+              endContent={<Icon icon="lucide:arrow-right" data-btn-arrow width={14} height={14} style={{ strokeWidth: 1.5 }} />}
+              onClick={openDemoModal}
+            >
+              Book a demo
+            </Button>
+          </NavbarItem>
         </NavbarContent>
 
-        <NavbarContent justify="end" className="flex-1 items-center justify-end gap-2 h-full">
+        <NavbarContent justify="end" className="mobile-only-nav items-center justify-end h-full">
           {/* Mobile Menu Toggle */}
           <NavbarItem className="mobile-only-nav">
             <Button
@@ -414,21 +425,6 @@ export function SiteNavbar() {
             >
               <Icon icon={menuOpen ? "lucide:x" : "lucide:menu"} width={18} height={18} style={{ strokeWidth: 1.9 }} />
             </Button>
-          </NavbarItem>
-
-          {/* Desktop CTA */}
-          <NavbarItem className="desktop-only-nav">
-            <Magnetic hitSlop={20} strength={9} radius={70}>
-              <Button
-                variant="flat"
-                color="default"
-                className="btn-obsidian nav-btn-base btn-arrow-lead !h-[34px] !px-3.5 text-[11.5px] font-semibold !rounded-[8px]"
-                endContent={<Icon icon="lucide:arrow-right" data-btn-arrow width={14} height={14} style={{ strokeWidth: 1.5 }} />}
-                onClick={openDemoModal}
-              >
-                Book a demo
-              </Button>
-            </Magnetic>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
