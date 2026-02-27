@@ -301,86 +301,6 @@ export default function Solution() {
         </div>
       </section>
 
-      {/* Why ScribeUp is Best-in-Class */}
-      <section data-reveal="section" className="relative pt-[36px] pb-6 sm:pb-10 md:pb-14 lg:pb-[72px] bg-white overflow-visible elite-unclip">
-        <div className="container-page">
-          <div className="mx-auto w-full max-w-[1200px]">
-            <motion.h2
-              className="text-[26px] md:text-[30px] font-semibold tracking-[-0.03em] text-[var(--ink)] max-w-2xl mb-6 md:mb-8 mx-auto text-center leading-[1.12]"
-              initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Why ScribeUp is Best-in-Class
-            </motion.h2>
-            <div className="rounded-[20px] bg-[#E2E8F0] p-px overflow-hidden">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E2E8F0] focus-dim">
-                {[
-                  {
-                    icon: "lucide:target",
-                    title: "Pure-Play Focus",
-                    desc: "We are 100% dedicated to subscription management. No competing priorities. Just best-in-class tooling.",
-                  },
-                {
-                  icon: "lucide:layers-3",
-                  title: "Most Comprehensive Toolset",
-                  desc: "From infrastructure to user experience, we provide the deepest and most complete subscription management capabilities available in one platform.",
-                },
-                {
-                  icon: "lucide:plug-zap",
-                  title: "Flexible Integration",
-                  desc: "SDK, iFrame or API-based features. White-labeled or customized. We fit into your architecture, not the other way around.",
-                },
-                {
-                  icon: "lucide:shield-check",
-                  title: "Enterprise-Grade Reliability",
-                  desc: "Built for scale, compliance, and operational resilience from day one.",
-                },
-                ].map(({ icon, title, desc }) => {
-                  const isPurePlay = title === "Pure-Play Focus";
-                  return (
-                <motion.div
-                  key={title}
-                  className="focus-dim-item group relative bg-white border border-slate-200/70 p-5 md:p-6 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-slate-300/70 hover:shadow-[0_0_0_4px_#F8FAFC,0_18px_44px_-22px_rgba(2,6,23,0.11)]"
-                  initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.35 }}
-                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-[#2563EB]/18 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`relative h-10 w-10 shrink-0 rounded-[12px] grid place-items-center transition-all duration-300 ${
-                        isPurePlay
-                          ? "bg-white border border-blue-200/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]"
-                          : "bg-[#EFF6FF] border border-blue-200/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] group-hover:bg-white group-hover:shadow-[0_8px_20px_-14px_rgba(2,6,23,0.16)]"
-                      }`}
-                    >
-                      <Icon
-                        icon={icon}
-                        width={18}
-                        height={18}
-                        className="text-[#2563EB]"
-                        style={{ strokeWidth: isPurePlay ? 1.5 : 1.5 }}
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-[14px] font-semibold tracking-[-0.02em] text-[var(--ink)] leading-[1.15]">{title}</h3>
-                      <p className="mt-1.5 text-[12.5px] text-slate-600 leading-[1.6]">{desc}</p>
-                    </div>
-                  </div>
-                </motion.div>
-                  );
-                })}
-            </div>
-          </div>
-          </div>
-        </div>
-      </section>
-
-      <div aria-hidden="true" className="soft-divider" />
-
       <section
         ref={bladeRef}
         data-reveal="section"
@@ -720,6 +640,85 @@ export default function Solution() {
                       </motion.div>
                     ))}
                 </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div aria-hidden="true" className="soft-divider" />
+      {/* Why ScribeUp is Best-in-Class */}
+      <section data-reveal="section" className="relative pt-[36px] pb-6 sm:pb-10 md:pb-14 lg:pb-[72px] bg-white overflow-visible elite-unclip">
+        <div className="container-page">
+          <div className="mx-auto w-full max-w-[1200px]">
+            <motion.h2
+              className="section-title max-w-2xl mb-6 md:mb-8 mx-auto text-center"
+              initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Why ScribeUp is Best-in-Class
+            </motion.h2>
+            <div className="rounded-[20px] bg-[#E2E8F0] p-px overflow-hidden">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E2E8F0] focus-dim">
+                {[
+                  {
+                    icon: "lucide:target",
+                    title: "Pure-Play Focus",
+                    desc: "We are 100% dedicated to subscription management. No competing priorities. Just best-in-class tooling.",
+                  },
+                  {
+                    icon: "lucide:layers-3",
+                    title: "Most Comprehensive Toolset",
+                    desc: "From infrastructure to user experience, we provide the deepest and most complete subscription management capabilities available in one platform.",
+                  },
+                  {
+                    icon: "lucide:plug-zap",
+                    title: "Flexible Integration",
+                    desc: "SDK, iFrame or API-based features. White-labeled or customized. We fit into your architecture, not the other way around.",
+                  },
+                  {
+                    icon: "lucide:shield-check",
+                    title: "Enterprise-Grade Reliability",
+                    desc: "Built for scale, compliance, and operational resilience from day one.",
+                  },
+                ].map(({ icon, title, desc }) => {
+                  const isPurePlay = title === "Pure-Play Focus";
+                  return (
+                    <motion.div
+                      key={title}
+                      className="focus-dim-item group relative bg-white border border-slate-200/70 p-5 md:p-6 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-slate-300/70 hover:shadow-[0_0_0_4px_#F8FAFC,0_18px_44px_-22px_rgba(2,6,23,0.11)]"
+                      initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+                      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.35 }}
+                      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-[#2563EB]/18 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="flex items-start gap-4">
+                        <div
+                          className={`relative h-10 w-10 shrink-0 rounded-[12px] grid place-items-center transition-all duration-300 ${
+                            isPurePlay
+                              ? "bg-white border border-blue-200/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]"
+                              : "bg-[#EFF6FF] border border-blue-200/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] group-hover:bg-white group-hover:shadow-[0_8px_20px_-14px_rgba(2,6,23,0.16)]"
+                          }`}
+                        >
+                          <Icon
+                            icon={icon}
+                            width={18}
+                            height={18}
+                            className="text-[#2563EB]"
+                            style={{ strokeWidth: isPurePlay ? 1.5 : 1.5 }}
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <h3 className="text-[14px] font-semibold tracking-[-0.02em] text-[var(--ink)] leading-[1.15]">{title}</h3>
+                          <p className="mt-1.5 text-[12.5px] text-slate-600 leading-[1.6]">{desc}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </div>
