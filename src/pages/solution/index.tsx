@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { Link as RouteLink } from "react-router-dom";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { useDemoModal } from "../../components/demo-modal-context";
 import { Magnetic } from "../../components/magnetic";
@@ -251,10 +250,10 @@ export default function Solution() {
         </div>
         <div className="container-page relative pt-[36px] sm:pt-[56px] md:pt-[80px] pb-[48px]">
           <div className="mx-auto w-full max-w-[1200px]">
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-4xl">
+            <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
               <div>
                 <motion.p
-                  className="wayfinder w-fit mx-auto lg:mx-0"
+                  className="wayfinder w-fit mx-auto"
                   initial={reducedMotion ? false : { opacity: 0, y: 8 }}
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -270,14 +269,14 @@ export default function Solution() {
                   Comprehensive Subscription Management. Your Way.
                 </motion.h1>
                 <motion.p
-                  className="mt-5 copy-hero max-w-2xl mx-auto lg:mx-0"
+                  className="mt-5 copy-hero max-w-2xl mx-auto"
                   initial={reducedMotion ? false : { opacity: 0, y: 10 }}
                   animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                   transition={{ duration: 0.52, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
                 >
                   Every feature. One platform. Embedded seamlessly via SDK, iFrame, or API to match your architecture.
                 </motion.p>
-                <div className="mt-7 flex flex-col sm:flex-row gap-3.5 sm:gap-3 items-stretch sm:items-center justify-center lg:justify-start w-full max-w-[360px] sm:max-w-none mx-auto lg:mx-0 px-0 sm:px-0">
+                <div className="mt-7 flex flex-col sm:flex-row gap-3.5 sm:gap-3 items-stretch sm:items-center justify-center w-full max-w-[360px] sm:max-w-none mx-auto px-0 sm:px-0">
                   <Magnetic strength={8} radius={40} hitSlop={18}>
                     <Button
                       variant="flat"
@@ -288,19 +287,6 @@ export default function Solution() {
                       onClick={openDemoModal}
                     >
                       Book a demo
-                    </Button>
-                  </Magnetic>
-                  <Magnetic strength={8} radius={40} hitSlop={18}>
-                    <Button
-                      as={RouteLink as any}
-                      to="/developer"
-                      variant="flat"
-                      color="default"
-                      className="nav-btn-base btn-arrow-lead !w-full sm:!w-auto !h-[52px] sm:!h-[40px] !px-5 text-[12.5px] font-semibold bg-white text-slate-700 border border-slate-200/70 hover:bg-slate-50 hover:border-slate-300/70 transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]"
-                      startContent={<Icon icon="lucide:key" width={17} height={17} style={{ strokeWidth: 1.5 }} />}
-                      endContent={<Icon icon="lucide:arrow-right" data-btn-arrow width={17} height={17} style={{ strokeWidth: 1.5 }} />}
-                    >
-                      Request API access
                     </Button>
                   </Magnetic>
                 </div>
@@ -769,7 +755,7 @@ export default function Solution() {
                     viewport={{ once: true, amount: 0.6 }}
                     transition={{ duration: 0.52, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    Measurable, activation‑tied ROI
+                    Measurable, outcome-tied ROI
                   </motion.h3>
                   <motion.p
                     className="mt-5 text-[14px] md:text-[15px] text-slate-700 leading-[1.65] max-w-[66ch] mx-auto"
@@ -823,7 +809,7 @@ export default function Solution() {
                       viewport={{ once: true, amount: 0.55 }}
                       transition={{ duration: 0.52, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      Deploy in weeks with a clean <span className="text-primary font-semibold">activation &rarr; outcomes</span> loop.
+                      Deploy in weeks with a clean <span className="text-primary font-semibold">personalized opportunity &rarr; outcomes</span> loop.
                     </motion.p>
                   </div>
                 <motion.div

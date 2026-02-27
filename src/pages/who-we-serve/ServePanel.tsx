@@ -137,20 +137,20 @@ export function ServePanel({
                         {
                           icon: "lucide:crown",
                           title: "Premium upsell",
-                          desc: "Bill and spending insights that nudge upgrades.",
+                          desc: "Park advanced functionality into your premium plan to drive upgrade",
                           tag: "Upsell",
                         },
                         {
                           icon: "lucide:banknote",
-                          title: "Personal loans",
-                          desc: "Loan and refinancing nudges from payment patterns.",
+                          title: "Cross-sell",
+                          desc: "Refinancing nudges when we find bills from competing providers",
                           tag: "Lending",
                         },
                         {
                           icon: "lucide:wallet",
-                          title: "EWA & savings",
-                          desc: "Product nudges when and how users pay bills.",
-                          tag: "Savings",
+                          title: "Inflection point nudges",
+                          desc: "Nudges for EWA, advances or loans to support users pay bills.",
+                          tag: "Nudges",
                         },
                       ].map((card, idx) => (
                         <motion.div

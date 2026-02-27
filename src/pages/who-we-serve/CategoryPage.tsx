@@ -606,20 +606,20 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
                   {
                     icon: "lucide:code",
                     title: "SDK",
-                    desc: "Drop-in for React and native. Fastest path to branded bill UX.",
-                    chips: ["React + native", "Drop‑in UI"],
+                    desc: "Integrate natively into your app—indistinguishable from your broader experience.",
+                    chips: ["White-Label", "Drop-In UI", "React + Native"],
                   },
                   {
                     icon: "lucide:layout",
                     title: "iFrame",
-                    desc: "Hosted flow, white-label. No front-end ownership.",
-                    chips: ["White‑label", "Hosted flow"],
+                    desc: "Add subscription management UI with a few lines of code.",
+                    chips: ["White-Label", "Drop-in UI", "Hosted Flow"],
                   },
                   {
                     icon: "lucide:plug",
                     title: "API",
-                    desc: "Build your own UI. Full control.",
-                    chips: ["REST + events", "Own the UX"],
+                    desc: "Build functionality into your broader app or build your own UI. Full control.",
+                    chips: ["Own the UX", "Rest + Events"],
                   },
                 ].map(({ icon, title, desc, chips }) => (
                   <motion.div
@@ -631,7 +631,7 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
                     }}
                   >
                     <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[2px] bg-[#2563EB]/18 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 min-h-[108px] md:min-h-[100px]">
                       <div className="h-10 w-10 shrink-0 rounded-[12px] bg-[#EFF6FF] border border-slate-200/70 grid place-items-center text-[#2563EB] transition-all duration-200 group-hover:bg-white group-hover:shadow-[0_6px_18px_rgba(2,6,23,0.06)] group-hover:border-slate-200/90">
                         <Icon icon={icon} width={20} height={20} className="text-[#2563EB]" style={{ strokeWidth: 1.5 }} />
                       </div>
@@ -641,11 +641,11 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
                       </div>
                     </div>
 
-                    <div className="mt-5 pt-4 border-t border-slate-200/60 flex flex-wrap items-center gap-2">
+                    <div className="mt-auto pt-4 border-t border-slate-200/60 flex flex-wrap lg:flex-nowrap items-center gap-1.5">
                       {chips.map((c) => (
                         <span
                           key={c}
-                          className="inline-flex items-center text-[10.5px] font-semibold uppercase tracking-[0.08em] bg-white/70 border border-slate-200/70 text-slate-600 px-2.5 py-1 rounded-[999px]"
+                          className="inline-flex items-center whitespace-nowrap text-[10px] font-semibold tracking-normal bg-white/70 border border-slate-200/70 text-slate-600 px-2 py-0.5 rounded-[999px]"
                         >
                           {c}
                         </span>
@@ -655,22 +655,6 @@ function CategoryPageShell({ slug }: { slug: SegmentSlug }) {
                 ))}
               </div>
             </motion.div>
-            <div className="mt-8 text-center">
-              <div aria-hidden="true" className="h-px w-full max-w-[520px] mx-auto bg-slate-200/70 mb-6" />
-              <Magnetic strength={8} radius={40} hitSlop={18}>
-                <Button
-                  as={RouteLink as any}
-                  to="/developer"
-                  variant="flat"
-                  color="default"
-                  className="nav-btn-base btn-arrow-lead !h-[40px] !px-6 text-[12.5px] font-semibold bg-[#EFF6FF] text-[#2563EB] border border-[rgba(37,99,235,0.14)] hover:bg-[#DBEAFE] hover:border-[rgba(37,99,235,0.20)] transition-colors"
-                  startContent={<Icon icon="lucide:book-open" width={16} height={16} style={{ strokeWidth: 1.5 }} />}
-                  endContent={<Icon icon="lucide:arrow-right" data-btn-arrow width={16} height={16} style={{ strokeWidth: 1.5 }} />}
-                >
-                  Read the docs
-                </Button>
-              </Magnetic>
-            </div>
           </div>
         </section>
       )}

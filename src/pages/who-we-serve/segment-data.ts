@@ -111,7 +111,7 @@ export const SEGMENTS: Record<SegmentSlug, SegmentData> = {
     metrics: [
       { label: "Premium plan conversion", value: "10%+", desc: "Calendar sync, 1-click cancel" },
       { label: "Retention", value: "5%+", desc: "Lift from deeper engagement" },
-      { label: "Cross-sell conversion", value: "11%", desc: "Personal loans, EWA, insurance" },
+      { label: "Cross-sell conversion", value: "11%", desc: "Personal loans, EWA, insurance & more" },
     ],
   },
 };

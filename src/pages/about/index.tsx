@@ -56,13 +56,13 @@ export default function About() {
   return (
     <div className="w-full page-shell bg-white">
       {/* Hero - Our Story */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden py-20 md:py-28">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute inset-0 dot-grid opacity-[0.03] [mask-image:radial-gradient(60%_65%_at_50%_0%,black,transparent_70%)]" />
           <div className="absolute inset-0 lavender-dot-fade noise-mask-bottom opacity-[0.05]" />
         </div>
-        <div className="container-page page-hero-pad relative pt-[48px] md:pt-[72px] pb-[72px] md:pb-[96px]">
-          <div className="mx-auto w-full max-w-[680px]">
+        <div className="container-page relative z-10">
+          <div className="w-full max-w-[960px]">
             <motion.h1
               className="text-[28px] sm:text-[34px] md:text-[40px] font-semibold tracking-[-0.05em] leading-[1.1] text-[var(--ink)]"
               initial={reducedMotion ? false : { opacity: 0, y: 8 }}
@@ -78,10 +78,10 @@ export default function About() {
               animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.52, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75]">
+              <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75] max-w-[72ch]">
                 ScribeUp was born from a simple frustration: the hassle of managing unwanted subscription charges. As MIT students, we experienced firsthand how easy it was to lose track of recurring payments—streaming, software, memberships. That pain point became a mission to empower people with a smarter way to manage their digital services.
               </p>
-              <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75]">
+              <p className="text-[15px] md:text-[16px] text-slate-700 leading-[1.75] max-w-[72ch]">
                 Today we give financial institutions an embeddable solution so their customers can track, optimize, and save on subscriptions and bills. Banks and fintechs use ScribeUp to boost engagement, drive loyalty, and unlock new revenue—with a seamless, intuitive experience.
               </p>
             </motion.div>
@@ -97,7 +97,7 @@ export default function About() {
         />
         <div className="container-page relative z-10">
           <motion.h2
-            className="text-left text-[22px] md:text-[26px] font-semibold tracking-[-0.04em] text-[var(--ink)]"
+            className="text-left text-[28px] sm:text-[34px] md:text-[40px] font-semibold tracking-[-0.05em] leading-[1.1] text-[var(--ink)]"
             initial={reducedMotion ? false : { opacity: 0, y: 10 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -106,7 +106,7 @@ export default function About() {
             Who We Are
           </motion.h2>
           <motion.div
-            className="mt-16 mx-auto w-full max-w-[960px]"
+            className="mt-12 mx-auto w-full max-w-[960px]"
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -131,7 +131,7 @@ export default function About() {
       </section>
 
       {/* Credibility: Started out of • Backed by • Featured in */}
-      <section className="relative py-16 md:py-28 overflow-hidden">
+      <section className="relative py-12 md:py-20 overflow-hidden">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(248,250,252,0.9),transparent_70%)]" />
         <div className="container-page relative z-10">
           <div className="mx-auto max-w-[1100px]">
@@ -139,66 +139,78 @@ export default function About() {
               <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200/70">
                 {/* Started out of MIT */}
                 <motion.div
-                  className="p-8 sm:p-10 md:p-12 flex flex-col items-center justify-start md:min-h-[220px] min-h-[180px]"
+                  className="p-6 sm:p-8 md:p-9 grid grid-rows-[auto_1fr] items-stretch md:min-h-[190px] min-h-[165px]"
                   initial={reducedMotion ? false : { opacity: 0, y: 10 }}
                   whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 w-full text-center">Started out of</p>
-                  <div className="mt-6 flex items-center justify-center min-h-[56px] md:min-h-[64px]">
-                    <img
-                      src={withBase("assets/about/mit.png")}
-                      alt="MIT - Massachusetts Institute of Technology"
-                      className="h-[48px] sm:h-[56px] md:h-[64px] w-auto object-contain"
-                      loading="lazy"
-                    />
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 w-full text-center min-h-[16px]">Started out of</p>
+                  <div className="mt-5 flex items-center justify-center min-h-[88px]">
+                    <div className="w-full max-w-[250px] h-[78px] rounded-[14px] bg-[#F8FAFC] border border-slate-200/70 px-4 flex items-center justify-center">
+                      <img
+                        src={withBase("assets/about/mit.png")}
+                        alt="MIT - Massachusetts Institute of Technology"
+                        className="h-[44px] sm:h-[50px] md:h-[56px] w-auto max-w-full object-contain object-center"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </motion.div>
 
                 {/* Backed by */}
                 <motion.div
                   id="backed"
-                  className="p-8 sm:p-10 md:p-12 flex flex-col items-center justify-start md:min-h-[220px] min-h-[160px]"
+                  className="p-6 sm:p-8 md:p-9 grid grid-rows-[auto_1fr] items-stretch md:min-h-[190px] min-h-[165px]"
                   initial={reducedMotion ? false : { opacity: 0, y: 10 }}
                   whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.55, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 w-full text-center">Backed by</p>
-                  <div className="mt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 gap-y-6">
-                    <img
-                      src={withBase("assets/about/mucker-capital.png")}
-                      alt="Mucker Capital"
-                      className="h-[32px] sm:h-[40px] md:h-[44px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
-                      loading="lazy"
-                    />
-                    <img
-                      src={withBase("assets/about/service-ventures.png")}
-                      alt="Service Ventures"
-                      className="h-[32px] sm:h-[40px] md:h-[44px] w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
-                      loading="lazy"
-                    />
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 w-full text-center min-h-[16px]">Backed by</p>
+                  <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:gap-3.5 min-h-[88px] w-full">
+                    <div className="w-full max-w-[236px] h-[60px] rounded-[12px] bg-[#F8FAFC] border border-slate-200/70 px-3.5 flex items-center justify-center">
+                      <img
+                        src={withBase("assets/about/mucker-capital.png")}
+                        alt="Mucker Capital"
+                        className="h-[29px] sm:h-[32px] md:h-[36px] w-auto max-w-full object-contain object-center opacity-95"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="w-full max-w-[236px] h-[60px] rounded-[12px] bg-[#F8FAFC] border border-slate-200/70 px-3.5 flex items-center justify-center">
+                      <img
+                        src={withBase("assets/about/service-ventures.png")}
+                        alt="Service Ventures"
+                        className="h-[29px] sm:h-[32px] md:h-[36px] w-auto max-w-full object-contain object-center opacity-95"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </motion.div>
 
                 {/* Featured in */}
                 <motion.div
                   id="featured"
-                  className="p-8 sm:p-10 md:p-12 flex flex-col items-center justify-start bg-slate-50/40 md:min-h-[220px] min-h-[160px]"
+                  className="p-6 sm:p-8 md:p-9 grid grid-rows-[auto_1fr] items-stretch bg-slate-50/40 md:min-h-[190px] min-h-[165px]"
                   initial={reducedMotion ? false : { opacity: 0, y: 10 }}
                   whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.55, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 w-full text-center">Featured in</p>
-                  <div className="mt-6 flex-1 flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 gap-y-6">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 w-full text-center min-h-[16px]">Featured in</p>
+                  <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:gap-3.5 min-h-[88px] w-full">
                     {FEATURED.map((p) => (
-                      <div key={p.alt} className="flex items-center justify-center">
+                      <div key={p.alt} className="w-full max-w-[236px] h-[60px] rounded-[12px] bg-[#F8FAFC] border border-slate-200/70 px-2.5 flex items-center justify-center">
                         <img
                           src={withBase(p.src)}
                           alt={p.alt}
-                          className="h-[28px] sm:h-[34px] md:h-[40px] w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
+                          className={`w-auto object-contain object-center opacity-95 ${
+                            p.alt === "TechCrunch"
+                              ? "h-[38px] sm:h-[40px]"
+                              : p.alt === "Wall Street Journal"
+                                ? "h-[36px] sm:h-[38px]"
+                                : "h-[38px] sm:h-[40px]"
+                          }`}
                           loading="lazy"
                         />
                       </div>
