@@ -157,6 +157,11 @@ export default function Home() {
   const [heroOrbitCalIdx, setHeroOrbitCalIdx] = React.useState(0);
   const [heroOrbitRightIdx, setHeroOrbitRightIdx] = React.useState(0);
   const [heroOrbitMiniIdx, setHeroOrbitMiniIdx] = React.useState(0);
+  const heroOrbitSavedIdxRef = React.useRef(0);
+  const heroOrbitMoneyIdxRef = React.useRef(0);
+  const heroOrbitCalIdxRef = React.useRef(0);
+  const heroOrbitRightIdxRef = React.useRef(0);
+  const heroOrbitMiniIdxRef = React.useRef(0);
   // Keep "Trusted by" anchored on the left (no center→left shift).
   const heroCursorX = useMotionValue(0);
   const heroCursorY = useMotionValue(0);
@@ -277,6 +282,20 @@ export default function Home() {
     return Array.from(new Set(all));
   }, [heroOrbitSavedItems, heroOrbitMoneyItems, heroOrbitCalItems, heroOrbitRightItems]);
 
+  const pickNextOrbitIndex = React.useCallback(
+    (items: readonly { k: string }[], currentIdx: number, blockedKeys: Set<string>) => {
+      const len = items.length;
+      if (len <= 1) return 0;
+      for (let step = 1; step <= len; step += 1) {
+        const idx = (currentIdx + step) % len;
+        if (!blockedKeys.has(items[idx]?.k ?? "")) return idx;
+      }
+      // Fallback: advance even if all candidates are blocked.
+      return (currentIdx + 1) % len;
+    },
+    [],
+  );
+
   React.useEffect(() => {
     if (typeof window === "undefined") return;
     if (reducedMotion) return;
@@ -289,12 +308,55 @@ export default function Home() {
     let d: number | null = null;
     let e: number | null = null;
 
+    const getCurrentVisibleKeys = () => {
+      const moneyLen = heroOrbitMoneyItems.length || 1;
+      return {
+        saved: heroOrbitSavedItems[heroOrbitSavedIdxRef.current]?.k ?? "",
+        money: heroOrbitMoneyItems[heroOrbitMoneyIdxRef.current]?.k ?? "",
+        cal: heroOrbitCalItems[heroOrbitCalIdxRef.current]?.k ?? "",
+        right: heroOrbitRightItems[heroOrbitRightIdxRef.current]?.k ?? "",
+        mini: heroOrbitCalItems[heroOrbitMiniIdxRef.current]?.k ?? "",
+        // miniB in UI mirrors the next money icon.
+        miniB: heroOrbitMoneyItems[(heroOrbitMoneyIdxRef.current + 1) % moneyLen]?.k ?? "",
+      };
+    };
+
     const t = window.setTimeout(() => {
-      a = window.setInterval(() => setHeroOrbitSavedIdx((v) => (v + 1) % heroOrbitSavedItems.length), 5200);
-      b = window.setInterval(() => setHeroOrbitMoneyIdx((v) => (v + 1) % heroOrbitMoneyItems.length), 6100);
-      c = window.setInterval(() => setHeroOrbitCalIdx((v) => (v + 1) % heroOrbitCalItems.length), 5600);
-      d = window.setInterval(() => setHeroOrbitRightIdx((v) => (v + 1) % heroOrbitRightItems.length), 4700);
-      e = window.setInterval(() => setHeroOrbitMiniIdx((v) => (v + 1) % heroOrbitCalItems.length), 6900);
+      a = window.setInterval(() => {
+        const cur = getCurrentVisibleKeys();
+        const blocked = new Set([cur.money, cur.cal, cur.right, cur.mini, cur.miniB].filter(Boolean));
+        const next = pickNextOrbitIndex(heroOrbitSavedItems, heroOrbitSavedIdxRef.current, blocked);
+        heroOrbitSavedIdxRef.current = next;
+        setHeroOrbitSavedIdx(next);
+      }, 5200);
+      b = window.setInterval(() => {
+        const cur = getCurrentVisibleKeys();
+        const blocked = new Set([cur.saved, cur.cal, cur.right, cur.mini].filter(Boolean));
+        const next = pickNextOrbitIndex(heroOrbitMoneyItems, heroOrbitMoneyIdxRef.current, blocked);
+        heroOrbitMoneyIdxRef.current = next;
+        setHeroOrbitMoneyIdx(next);
+      }, 6100);
+      c = window.setInterval(() => {
+        const cur = getCurrentVisibleKeys();
+        const blocked = new Set([cur.saved, cur.money, cur.right, cur.miniB].filter(Boolean));
+        const next = pickNextOrbitIndex(heroOrbitCalItems, heroOrbitCalIdxRef.current, blocked);
+        heroOrbitCalIdxRef.current = next;
+        setHeroOrbitCalIdx(next);
+      }, 5600);
+      d = window.setInterval(() => {
+        const cur = getCurrentVisibleKeys();
+        const blocked = new Set([cur.saved, cur.money, cur.cal, cur.mini, cur.miniB].filter(Boolean));
+        const next = pickNextOrbitIndex(heroOrbitRightItems, heroOrbitRightIdxRef.current, blocked);
+        heroOrbitRightIdxRef.current = next;
+        setHeroOrbitRightIdx(next);
+      }, 4700);
+      e = window.setInterval(() => {
+        const cur = getCurrentVisibleKeys();
+        const blocked = new Set([cur.saved, cur.money, cur.cal, cur.right, cur.miniB].filter(Boolean));
+        const next = pickNextOrbitIndex(heroOrbitCalItems, heroOrbitMiniIdxRef.current, blocked);
+        heroOrbitMiniIdxRef.current = next;
+        setHeroOrbitMiniIdx(next);
+      }, 6900);
     }, startDelayMs);
 
     return () => {
@@ -312,7 +374,24 @@ export default function Home() {
     heroOrbitMoneyItems.length,
     heroOrbitCalItems.length,
     heroOrbitRightItems.length,
+    pickNextOrbitIndex,
   ]);
+
+  React.useEffect(() => {
+    heroOrbitSavedIdxRef.current = heroOrbitSavedIdx;
+  }, [heroOrbitSavedIdx]);
+  React.useEffect(() => {
+    heroOrbitMoneyIdxRef.current = heroOrbitMoneyIdx;
+  }, [heroOrbitMoneyIdx]);
+  React.useEffect(() => {
+    heroOrbitCalIdxRef.current = heroOrbitCalIdx;
+  }, [heroOrbitCalIdx]);
+  React.useEffect(() => {
+    heroOrbitRightIdxRef.current = heroOrbitRightIdx;
+  }, [heroOrbitRightIdx]);
+  React.useEffect(() => {
+    heroOrbitMiniIdxRef.current = heroOrbitMiniIdx;
+  }, [heroOrbitMiniIdx]);
 
   const applyHeroMove = React.useCallback(() => {
     heroMoveRaf.current = null;
