@@ -11,11 +11,6 @@ import About from "../pages/about";
 import PrivacyPolicy from "../pages/privacy";
 import Terms from "../pages/terms";
 import TrustCenter from "../pages/trust-center";
-import Security from "../pages/security";
-import Soc2 from "../pages/soc2";
-import Status from "../pages/status";
-import Credits from "../pages/credits";
-
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   React.useLayoutEffect(() => {
@@ -88,15 +83,12 @@ export function Routes() {
         <Route exact path="/who-we-serve/banks" component={WhoWeServeBanks} />
         <Route exact path="/who-we-serve/credit-unions" component={WhoWeServeCreditUnions} />
         <Route exact path="/who-we-serve/fintechs" component={WhoWeServeFintechs} />
-        <Route exact path="/credits" component={Credits} />
         <Route exact path="/developer" component={Developer} />
         <Route exact path="/about" component={About} />
         <Route exact path="/privacy" component={PrivacyPolicy} />
-        <Route exact path="/terms" component={Terms} />
+        <Route exact path="/terms-of-service" component={Terms} />
+        <Route exact path="/terms" render={() => <Redirect to="/terms-of-service" />} />
         <Route exact path="/trust-center" component={TrustCenter} />
-        <Route exact path="/security" component={Security} />
-        <Route exact path="/soc2" component={Soc2} />
-        <Route exact path="/status" component={Status} />
         <Route exact path="/company" render={() => <Redirect to="/about" />} />
         <Redirect to="/" />
       </Switch>

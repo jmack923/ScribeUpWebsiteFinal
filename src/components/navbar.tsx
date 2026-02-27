@@ -55,7 +55,7 @@ export function SiteNavbar() {
 
   const navItems: NavItem[] = [
     { label: "Home", to: "/" },
-    { label: "Our Solution", to: "/solution" },
+    { label: "Solution", to: "/solution" },
     {
       label: "Who We Serve",
       to: "/who-we-serve/banks",
@@ -78,24 +78,6 @@ export function SiteNavbar() {
       ],
     },
     { label: "About", to: "/about" },
-    {
-      label: "Developer",
-      to: "/developer",
-      megaMenu: [
-        {
-          title: "Developer docs",
-          desc: "Implementation overview and integration guidance",
-          icon: "lucide:code-2",
-          to: "/developer",
-        },
-        {
-          title: "Book a demo",
-          desc: "Talk to the team and get a rollout plan",
-          icon: "lucide:calendar",
-          to: "__demo__",
-        },
-      ],
-    },
   ];
 
   React.useEffect(() => {
@@ -163,7 +145,7 @@ export function SiteNavbar() {
           {navItems.map((item) => {
             const hasDropdown = "dropdown" in item && Array.isArray(item.dropdown);
             const hasMegaMenu = "megaMenu" in item && Array.isArray(item.megaMenu);
-            const hoverOnly = item.label === "Developer" || item.label === "Who We Serve";
+            const hoverOnly = item.label === "Who We Serve";
             const megaOpen = hasMegaMenu && desktopMenuOpen === item.label;
             const active =
               pathname === item.to ||
@@ -493,7 +475,7 @@ export function SiteNavbar() {
                 {navItems.map((item) => {
                   const hasDropdown = "dropdown" in item && Array.isArray(item.dropdown);
                   const hasMegaMenu = "megaMenu" in item && Array.isArray(item.megaMenu);
-                  const hoverOnly = item.label === "Developer" || item.label === "Who We Serve";
+                  const hoverOnly = item.label === "Who We Serve";
                   const active =
                     pathname === item.to ||
                     (hasDropdown && item.dropdown.some((d) => d.to === pathname)) ||

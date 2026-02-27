@@ -61,9 +61,15 @@ const AVAILABLE_FEATURES = [
     },
   },
   {
-    title: "Transaction enrichment & recurrence detection",
+    title: "Other feature capabilities",
     tag: "API or in-product",
     icon: "lucide:repeat-2",
+    listContent: [
+      "Transaction enrichment",
+      "Recurrence detection",
+      "Onboarding bill-switch",
+      "& more!",
+    ],
   },
 ] as const;
 
@@ -487,7 +493,43 @@ export default function Solution() {
                 <div className="relative w-full flex items-center justify-center">
                   <div className="safari-clip relative w-auto max-w-[260px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-none h-[360px] sm:h-[420px] md:h-[460px] lg:h-[520px] aspect-[1/2.16] rounded-[32px] border-[6px] border-[#0F172A] bg-white shadow-[0_20px_44px_-14px_rgba(0,0,0,0.14),0_0_0_1px_rgba(0,0,0,0.05)] overflow-hidden">
                     <AnimatePresence initial={false} mode="sync">
-                      {selectedVideo?.mp4 && !featureVideoFailed ? (
+                      {(selectedFeature as any).listContent ? (
+                        <motion.div
+                          key="other-features-list"
+                          className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8 bg-[linear-gradient(180deg,#F8FAFC_0%,#FFFFFF_100%)] [will-change:opacity]"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                          <div className="w-full max-w-[220px]">
+                            <div className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                              Feature highlights
+                            </div>
+                            <div className="space-y-3.5">
+                              {(selectedFeature as any).listContent.map((item: string, idx: number) => {
+                                const isMore = item === "& more!";
+                                return (
+                                  <motion.div
+                                    key={item}
+                                    className={`flex items-center gap-3 ${isMore ? "pt-1" : ""}`}
+                                    initial={{ opacity: 0, x: -6 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.35, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                                  >
+                                    <div className="shrink-0 h-6 w-6 rounded-full bg-[#EFF6FF] border border-blue-200/60 flex items-center justify-center">
+                                      <Icon icon="lucide:check" width={12} height={12} className="text-[#2563EB]" style={{ strokeWidth: 2.5 }} />
+                                    </div>
+                                    <span className={`text-[13px] sm:text-[14px] font-medium tracking-[-0.02em] leading-[1.4] ${isMore ? "text-slate-500 italic" : "text-slate-800"}`}>
+                                      {item}
+                                    </span>
+                                  </motion.div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </motion.div>
+                      ) : selectedVideo?.mp4 && !featureVideoFailed ? (
                         <motion.video
                           key={selectedVideo.mp4}
                           ref={featureVideoRef}

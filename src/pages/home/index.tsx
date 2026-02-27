@@ -451,50 +451,48 @@ export default function Home() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, ease: EASE_OUT }}
-              className="min-w-0 lg:col-span-1 lg:pt-0 xl:pt-0 lg:self-center flex flex-col items-center lg:items-start text-center lg:text-left"
+              className="min-w-0 lg:col-span-1 lg:pt-0 xl:pt-0 lg:self-center flex flex-col items-center xl:items-start text-center xl:text-left"
             >
               {/* Constrained column (Atomic-style): keep the hero copy in a precise stacked lane */}
-              <div className="max-w-[600px] mx-auto lg:mx-0">
-              <p className="wayfinder w-fit mx-auto lg:mx-0">ScribeUp</p>
+              <div className="max-w-[600px] mx-auto xl:mx-0">
+              <p className="wayfinder w-fit mx-auto xl:mx-0">ScribeUp</p>
               <h1 className="mt-8 mb-6 text-pretty text-[clamp(1.85rem,5vw,3.45rem)] md:text-[clamp(2.2rem,6.0vw,3.45rem)] leading-[1.15] md:leading-[1.08] lg:leading-[1.02] tracking-[-0.05em] font-medium text-[var(--ink)] max-w-full">
                 <span className="block">Turn your banking app</span>
-                <span className="block xl:whitespace-nowrap">
-                  into the{" "}
-                  <span
-                    className="relative inline-flex items-baseline font-medium text-blue-700 whitespace-normal xl:whitespace-nowrap"
-                    style={{ minWidth: `${heroWordWidthCh}ch` }}
-                  >
-                    {isSmallHero ? (
-                      <AnimatePresence mode="popLayout" initial={false}>
-                        <motion.span
-                          key={heroWordCycle[heroWordIdx]}
-                          initial={{ opacity: 0, y: 3 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -3 }}
-                          transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                          className="whitespace-nowrap inline-block"
-                          style={{ minWidth: `${heroWordWidthCh}ch` }}
-                        >
-                          {heroWordCycle[heroWordIdx]}
-                        </motion.span>
-                      </AnimatePresence>
-                    ) : (
-                      <span className="relative inline-flex items-baseline whitespace-normal xl:whitespace-nowrap">
-                        <span className="whitespace-nowrap">{heroWordCycle[heroWordIdx].slice(0, heroWordPos)}</span>
-                        <motion.span
-                          aria-hidden="true"
-                          className="ml-[2px] inline-block w-[2px] h-[0.85em] translate-y-[0.08em] bg-blue-600/90 rounded-full"
-                          animate={reducedMotion ? { opacity: 1 } : { opacity: [1, 0, 1] }}
-                          transition={reducedMotion ? { duration: 0.2 } : { duration: 0.9, repeat: Infinity, ease: "linear" }}
-                        />
-                      </span>
-                    )}
-                  </span>
+                <span className="block">into the</span>
+                <span
+                  className="relative inline-flex items-baseline font-medium text-blue-700 w-fit xl:whitespace-nowrap"
+                  style={{ minWidth: `${heroWordWidthCh}ch` }}
+                >
+                  {isSmallHero ? (
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      <motion.span
+                        key={heroWordCycle[heroWordIdx]}
+                        initial={{ opacity: 0, y: 3 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -3 }}
+                        transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                        className="whitespace-nowrap inline-block"
+                        style={{ minWidth: `${heroWordWidthCh}ch` }}
+                      >
+                        {heroWordCycle[heroWordIdx]}
+                      </motion.span>
+                    </AnimatePresence>
+                  ) : (
+                    <span className="relative inline-flex items-baseline whitespace-normal xl:whitespace-nowrap">
+                      <span className="whitespace-nowrap">{heroWordCycle[heroWordIdx].slice(0, heroWordPos)}</span>
+                      <motion.span
+                        aria-hidden="true"
+                        className="ml-[2px] inline-block w-[2px] h-[0.85em] translate-y-[0.08em] bg-blue-600/90 rounded-full"
+                        animate={reducedMotion ? { opacity: 1 } : { opacity: [1, 0, 1] }}
+                        transition={reducedMotion ? { duration: 0.2 } : { duration: 0.9, repeat: Infinity, ease: "linear" }}
+                      />
+                    </span>
+                  )}
                 </span>
                 <span className="block">for a user&apos;s bills</span>
               </h1>
               
-              <p className="mt-0 mb-8 text-slate-700 text-[15px] md:text-[15px] leading-[1.6] max-w-[48ch] text-balance font-normal tracking-[-0.01em] mx-auto lg:mx-0">
+              <p className="mt-0 mb-8 text-slate-700 text-[15px] md:text-[15px] leading-[1.6] max-w-[48ch] text-balance font-normal tracking-[-0.01em] mx-auto xl:mx-0">
                 Embed subscription management directly inside your digital experience. Help customers save money, stay in control, and give them a reason to make your app their financial home.
               </p>
 
@@ -512,7 +510,7 @@ export default function Home() {
                 </Button>
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-2 items-center justify-center lg:justify-start hidden md:flex">
+              <div className="mt-6 flex flex-wrap gap-2 items-center justify-center xl:justify-start hidden md:flex">
                 <Button
                   variant="flat"
                   color="default"
@@ -698,12 +696,8 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.8 }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="text-[13px] md:text-[12px] font-semibold text-blue-600 uppercase tracking-[0.15em] flex items-center justify-center md:justify-start gap-3">
+                <div className="text-[13px] md:text-[12px] font-semibold text-blue-600 uppercase tracking-[0.15em] flex items-center justify-center md:justify-start">
                   Trusted by
-                  <span className="hidden lg:inline-block w-px h-3 bg-blue-200" />
-                  <span className="hidden lg:inline-block text-[11px] normal-case tracking-normal font-medium text-slate-500">
-                    and 30+ other financial institutions
-                  </span>
                 </div>
               </motion.div>
               
@@ -711,8 +705,7 @@ export default function Home() {
                 <ClientLogoCarousel />
               </div>
 
-              {/* Mobile-only fallback for the count */}
-              <div className="mt-4 md:mt-6 flex items-center justify-center lg:hidden">
+              <div className="mt-2 md:mt-3 flex items-center justify-center">
                 <p className="text-center text-[14px] text-slate-500">
                   and 30+ other financial institutions
                 </p>
@@ -722,11 +715,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div aria-hidden="true" className="bg-white py-2 md:py-3">
-        <div className="soft-divider" />
-      </div>
-
-      {/* Segment selector (separate band: fixes Trusted-by → ROI rhythm) */}
+      {/* Segment selector — above line break */}
       <section
         ref={segmentRef}
         id="segment-selector"
@@ -769,7 +758,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div aria-hidden="true" className="bg-white py-1.5 md:py-3">
+      <div aria-hidden="true" className="bg-white py-2 md:py-3">
         <div className="soft-divider" />
       </div>
 
@@ -798,8 +787,8 @@ export default function Home() {
               <div className="flex flex-col md:grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-0 items-center text-center md:text-left">
                 {[
                   { metric: "6+", label: "Card Primacy", detail: "Additional monthly card swipes" },
-                  { metric: "5%+", label: "Deepen Engagement", detail: "Lift in user retention" },
-                  { metric: "11%", label: "Personalized Cross‑Sell", detail: "Conversion on cross‑sell across products" },
+                  { metric: "5%+", label: "Deepen Engagement", detail: "Lift in banking user retention" },
+                  { metric: "11%", label: "Personalized Cross‑Sell", detail: "In-app conversion" },
                 ].map((m, i) => (
                   <motion.div
                     key={m.label}
@@ -809,11 +798,11 @@ export default function Home() {
                     viewport={{ once: true, amount: 0.55 }}
                     transition={{ duration: 0.55, delay: Math.min(i * 0.06, 0.18), ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="text-[40px] md:text-[64px] font-light tracking-[-0.05em] leading-none text-slate-900">
-                      <LedgerMetricCount value={m.metric} reducedMotion={reducedMotion} />
-                    </div>
-                    <div className="mt-4 text-[12px] uppercase tracking-[0.15em] font-medium text-slate-500">
+                    <div className="text-[12px] uppercase tracking-[0.15em] font-medium text-slate-500">
                       {m.label}
+                    </div>
+                    <div className="mt-3 text-[40px] md:text-[64px] font-light tracking-[-0.05em] leading-none text-slate-900">
+                      <LedgerMetricCount value={m.metric} reducedMotion={reducedMotion} />
                     </div>
                     <div className="mt-2 text-[14px] leading-[1.6] text-slate-600">
                       {m.detail}

@@ -48,29 +48,20 @@ export function SiteFooter() {
         ctaKind: "demo" as const,
       };
     }
-    if (pathname.startsWith("/credits")) {
-      return {
-        kicker: "",
-        title: "Validate the ledger model.",
-        sub: "See how Credits map to infrastructure actions across SDK, iFrame, and API surfaces.",
-        ctaLabel: "Book a demo",
-        ctaKind: "demo" as const,
-      };
-    }
     if (pathname.startsWith("/solution")) {
       return {
         kicker: "",
-        title: "Schedule institutional briefing.",
-        sub: "See the embedded flow, integration path, and success terminal — built for regulated environments.",
-        ctaLabel: "Schedule institutional briefing",
+        title: "Explore what bill management could look like in your app",
+        sub: "Minimal lift. Maximum user value. Clear ROI.",
+        ctaLabel: "Schedule a Demo",
         ctaKind: "demo" as const,
       };
     }
     return {
       kicker: "",
-      title: "Schedule institutional briefing.",
-      sub: "A clean path to embedded rollout — engineered for fintech and regulated environments.",
-      ctaLabel: "Schedule institutional briefing",
+      title: "Explore what bill management could look like in your app",
+      sub: "Minimal lift. Maximum user value. Clear ROI.",
+      ctaLabel: "Schedule a Demo",
       ctaKind: "demo" as const,
     };
   }, [pathname]);
@@ -150,47 +141,47 @@ export function SiteFooter() {
                   />
                 </RouteLink>
                 <p className="mt-5 text-[14px] text-slate-200/80 max-w-xs leading-[1.8]">
-                  Embedded recurring bill management infrastructure for modern financial institutions.
+                  Embedded recurring bill management solutions for modern financial institutions.
                 </p>
-              </div>
-
-              <div>
-                <h4 className="text-[12px] font-semibold uppercase tracking-[0.20em] text-slate-50">Product</h4>
-                <ul className="mt-5 space-y-3 md:space-y-4 text-[14px] leading-[1.8] text-slate-300/80">
-                  <li>
-                    <Link as={RouteLink} to="/solution" className="footer-link">
-                      Solution
-                    </Link>
-                  </li>
-                  <li>
-                    <Link as={RouteLink} to="/credits" className="footer-link">
-                      Credits
-                    </Link>
-                  </li>
-                  <li>
-                    <Link as={RouteLink} to="/who-we-serve" className="footer-link">
-                      Who We Serve
-                    </Link>
-                  </li>
-                </ul>
               </div>
 
               <div>
                 <h4 className="text-[12px] font-semibold uppercase tracking-[0.20em] text-slate-50">Company</h4>
                 <ul className="mt-5 space-y-3 md:space-y-4 text-[14px] leading-[1.8] text-slate-300/80">
                   <li>
+                    <Link as={RouteLink} to="/" className="footer-link">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link as={RouteLink} to="/solution" className="footer-link">
+                      Solution
+                    </Link>
+                  </li>
+                  <li>
                     <Link as={RouteLink} to="/about" className="footer-link">
                       About
                     </Link>
                   </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-[12px] font-semibold uppercase tracking-[0.20em] text-slate-50">Who We Serve</h4>
+                <ul className="mt-5 space-y-3 md:space-y-4 text-[14px] leading-[1.8] text-slate-300/80">
                   <li>
-                    <Link as={RouteLink} to="/privacy" className="footer-link">
-                      Privacy
+                    <Link as={RouteLink} to="/who-we-serve/fintechs" className="footer-link">
+                      Fintechs
                     </Link>
                   </li>
                   <li>
-                    <Link as={RouteLink} to="/terms" className="footer-link">
-                      Terms
+                    <Link as={RouteLink} to="/who-we-serve/banks" className="footer-link">
+                      Banks
+                    </Link>
+                  </li>
+                  <li>
+                    <Link as={RouteLink} to="/who-we-serve/credit-unions" className="footer-link">
+                      Credit Unions
                     </Link>
                   </li>
                 </ul>
@@ -205,18 +196,13 @@ export function SiteFooter() {
                     </Link>
                   </li>
                   <li>
-                    <Link as={RouteLink} to="/security" className="footer-link">
-                      Security
+                    <Link as={RouteLink} to="/privacy" className="footer-link">
+                      Privacy
                     </Link>
                   </li>
                   <li>
-                    <Link as={RouteLink} to="/soc2" className="footer-link">
-                      SOC 2
-                    </Link>
-                  </li>
-                  <li>
-                    <Link as={RouteLink} to="/status" className="footer-link">
-                      Status
+                    <Link as={RouteLink} to="/terms-of-service" className="footer-link">
+                      Terms
                     </Link>
                   </li>
                 </ul>
@@ -232,7 +218,7 @@ export function SiteFooter() {
                 <Link as={RouteLink} to="/privacy" className="footer-link">
                   Privacy
                 </Link>
-                <Link as={RouteLink} to="/terms" className="footer-link">
+                <Link as={RouteLink} to="/terms-of-service" className="footer-link">
                   Terms
                 </Link>
               </div>

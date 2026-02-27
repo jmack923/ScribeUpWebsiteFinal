@@ -1,8 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link as RouteLink } from "react-router-dom";
 import { Button } from "@heroui/react";
-import { Icon } from "@iconify/react";
 import { useDemoModal } from "../../components/demo-modal-context";
 
 export default function TrustCenter() {
@@ -31,53 +29,10 @@ export default function TrustCenter() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-14 rounded-[28px] bg-[#E2E8F0] p-px overflow-hidden"
-            >
-              <div className="grid md:grid-cols-2 gap-px bg-[#E2E8F0]">
-                {[
-                  {
-                    title: "Security overview",
-                    to: "/security",
-                    icon: "lucide:shield-check",
-                    desc: "Key controls, encryption, access, monitoring, and incident response.",
-                  },
-                  {
-                    title: "SOC 2",
-                    to: "/soc2",
-                    icon: "lucide:file-badge-2",
-                    desc: "SOC 2 Type II status and evidence request workflow.",
-                  },
-                ].map((c) => (
-                  <div key={c.title} className="bg-white p-7 md:p-8">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-[16px] border border-slate-200/70 bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]">
-                      <Icon icon={c.icon} width={18} height={18} className="text-blue-700/75" style={{ strokeWidth: 1.5 }} />
-                    </div>
-                    <div className="mt-4 text-[16px] font-semibold tracking-[-0.03em] text-[var(--ink)]">{c.title}</div>
-                    <div className="mt-2 text-[13.5px] leading-[1.65] text-slate-600 max-w-[60ch]">{c.desc}</div>
-                    <div className="mt-6">
-                      <Button
-                        as={RouteLink as any}
-                        to={c.to}
-                        variant="flat"
-                        color="default"
-                        className="nav-btn-base btn-s-tier btn-arrow-lead !h-[38px] !px-5 text-[12.5px] font-semibold whitespace-nowrap !rounded-[8px] border border-slate-200/70 bg-white hover:bg-slate-50"
-                      >
-                        View
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-3"
+              transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-3"
             >
               <Button
                 variant="flat"
@@ -86,15 +41,6 @@ export default function TrustCenter() {
                 onClick={openDemoModal}
               >
                 Request trust packet
-              </Button>
-              <Button
-                as={RouteLink as any}
-                to="/status"
-                variant="flat"
-                color="default"
-                className="nav-btn-base btn-s-tier btn-arrow-lead !h-[40px] !px-6 text-[12.5px] font-semibold whitespace-nowrap !rounded-[8px] border border-slate-200/70 bg-white hover:bg-slate-50"
-              >
-                View status
               </Button>
             </motion.div>
           </div>
