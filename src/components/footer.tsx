@@ -172,7 +172,7 @@ export function SiteFooter() {
             <div className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               {/* left: copyright + legal */}
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-slate-300/75">
-                <span className="font-mono tracking-[0.12em]">© {new Date().getFullYear()} ScribeUp, Inc.</span>
+                <span className="font-mono tracking-[0.12em]">© {new Date().getFullYear()} ScribeUp Technologies, Inc.</span>
                 <Link as={RouteLink} to="/privacy" className="footer-link">
                   Privacy
                 </Link>
