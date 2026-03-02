@@ -9,8 +9,8 @@
 
   <rect width="1200" height="630" fill="url(#canvas)" />
 
-  <!-- Left-side logo (aligned to text rail and optical baseline) -->
-  <image href="assets/og/scribeup-logo-horizontal.svg" x="72" y="484" width="248" height="48" preserveAspectRatio="xMinYMid meet" />
+  <!-- Left-side logo (closer to text block for tighter vertical system) -->
+  <image href="assets/og/scribeup-logo-horizontal.svg" x="72" y="446" width="248" height="48" preserveAspectRatio="xMinYMid meet" />
 
   <!-- Main phone image from provided asset -->
   <g transform="translate(792 34)">
